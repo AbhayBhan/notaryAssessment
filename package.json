@@ -3,12 +3,15 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "http://abhaybhan.github.io/notaryAssessment",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "buildcss": "tailwindcss -i ./src/style.css -o ./src/styles/main.css",
-    "watch": "tailwindcss -i ./src/style.css -o ./src/styles/main.css --watch"
+    "watch": "tailwindcss -i ./src/style.css -o ./src/styles/main.css --watch",
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d build"
   },
   "dependencies": {
     "axios": "^1.2.1",
