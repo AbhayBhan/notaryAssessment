@@ -1,9 +1,9 @@
 {
   "name": "notarytask",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "http://abhaybhan.github.io/",
+  "homepage": "http://abhaybhan.github.io/notaryAssessment",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
