@@ -7,7 +7,7 @@ import Step3 from "./Step3";
 import Step4 from "./Step4";
 import '../styles/main.css'
 
-const Form = () => {
+const Form = ({servicedetails , costingdetails}) => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     name : "",
@@ -36,7 +36,7 @@ const Form = () => {
 
   const handlePages = () => {
     if(step === 1){
-      return <Step1 />
+      return <Step1 servicedetails={servicedetails} costingdetails={costingdetails}/>
     } else if(step === 2){
       return <Step2 formData={formData} setFormData={setFormData}/>
     } else if(step === 3){

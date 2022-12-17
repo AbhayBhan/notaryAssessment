@@ -580,11 +580,6 @@ video {
   margin-right: auto;
 }
 
-.my-auto {
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
 .mb-11 {
   margin-bottom: 2.75rem;
 }
@@ -607,6 +602,10 @@ video {
 
 .ml-12 {
   margin-left: 3rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
 }
 
 .ml-6 {
@@ -641,12 +640,20 @@ video {
   margin-bottom: 1rem;
 }
 
-.mt-16 {
-  margin-top: 4rem;
-}
-
 .mt-8 {
   margin-top: 2rem;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
+.mt-\[20vh\] {
+  margin-top: 20vh;
+}
+
+.mt-16 {
+  margin-top: 4rem;
 }
 
 .mt-12 {
@@ -655,30 +662,6 @@ video {
 
 .ml-64 {
   margin-left: 16rem;
-}
-
-.mt-3 {
-  margin-top: 0.75rem;
-}
-
-.mt-\[\] {
-  margin-top: ;
-}
-
-.mt-\[20vh\] {
-  margin-top: 20vh;
-}
-
-.mb-1 {
-  margin-bottom: 0.25rem;
-}
-
-.mt-1 {
-  margin-top: 0.25rem;
-}
-
-.block {
-  display: block;
 }
 
 .inline-block {
@@ -699,10 +682,6 @@ video {
 
 .h-\[100vh\] {
   height: 100vh;
-}
-
-.h-\[100\%\] {
-  height: 100%;
 }
 
 .w-\[87vw\] {
@@ -765,12 +744,12 @@ video {
   gap: 0.75rem;
 }
 
-.gap-8 {
-  gap: 2rem;
-}
-
 .gap-16 {
   gap: 4rem;
+}
+
+.gap-8 {
+  gap: 2rem;
 }
 
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
@@ -863,10 +842,6 @@ video {
 
 .p-6 {
   padding: 1.5rem;
-}
-
-.p-\[2px\] {
-  padding: 2px;
 }
 
 .px-4 {
@@ -1010,8 +985,4 @@ video {
   .md\:w-\[20vw\] {
     width: 20vw;
   }
-}
-
-*{
-  font-family: 'Poppins', sans-serif;
 }
