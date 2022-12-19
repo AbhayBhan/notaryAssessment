@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useData } from "../../contexts/DataContext";
 
-const RonForm = ({costingdetails}) => {
+const RonForm = () => {
+  const {getCostDet} = useData();
+  const costingdetails = getCostDet();
   const [quote, setQuote] = useState(costingdetails.GEN_ONLINE.baseNotarisationCost);
   const [signatures, SetSignatures] = useState(0);
 

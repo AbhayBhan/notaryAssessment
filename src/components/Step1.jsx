@@ -1,42 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "../styles/main.css";
 import RonForm from "./forms/RonForm";
 import MobNotaryForm from "./forms/MobNotaryForm";
 import NotarySignForm from "./forms/NotarySignForm";
 
-const Step1 = ({servicedetails, costingdetails}) => {
-  const [signActive, setSignActive] = useState(false);
-  const [remoteActive, setRemoteActive] = useState(false);
-  const [mobileActive, setMobileActive] = useState(false);
+const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
 
   const handleSign = () => {
-    if(signActive){
-      setSignActive(false);
-      return
+    if(activeAgent.nsa){
+      setActiveAgent({...activeAgent, nsa : false});
+      return;
     }
-    setRemoteActive(false);
-    setMobileActive(false);
-    setSignActive(true);
+    setActiveAgent({nsa : true, mgn : false, ron : false});
+    setFormData({...formData, isRealEstateTransaction : true});
   };
 
   const handleRemote = () => {
-    if(remoteActive){
-      setRemoteActive(false);
+    if(activeAgent.ron){
+      setActiveAgent({...activeAgent, ron : false});
       return;
     }
-    setSignActive(false);
-    setMobileActive(false);
-    setRemoteActive(true);
+    setActiveAgent({nsa : false, mgn : false, ron : true});
+    setFormData({...formData, isRealEstateTransaction : false});
   };
 
   const handleMobile = () => {
-    if(mobileActive){
-      setMobileActive(false);
+    if(activeAgent.mgn){
+      setActiveAgent({...activeAgent, mgn : false});
       return;
     }
-    setSignActive(false);
-    setRemoteActive(false);
-    setMobileActive(true);
+    setActiveAgent({nsa : false, mgn : true, ron : false});
+    setFormData({...formData, isRealEstateTransaction : false});
   };
 
   return (
@@ -44,8 +38,8 @@ const Step1 = ({servicedetails, costingdetails}) => {
       <div className="container flex flex-col gap-3 space-y-0">
         <div
           style={{
-            borderColor: signActive ? "#8b36fd" : "#d5cfe3",
-            backgroundColor: signActive ? "#fef2be" : "#FFF",
+            borderColor: activeAgent.nsa ? "#8b36fd" : "#d5cfe3",
+            backgroundColor: activeAgent.nsa ? "#fef2be" : "#FFF",
           }}
           onClick={handleSign}
           className="flex flex-col mt-6 border-2 transition-all ease-out duration-150 border-notaryGrey rounded-xl"
@@ -60,8 +54,8 @@ const Step1 = ({servicedetails, costingdetails}) => {
         </div>
         <div
           style={{
-            borderColor: remoteActive ? "#8b36fd" : "#d5cfe3",
-            backgroundColor: remoteActive ? "#fef2be" : "#FFF",
+            borderColor: activeAgent.ron ? "#8b36fd" : "#d5cfe3",
+            backgroundColor: activeAgent.ron ? "#fef2be" : "#FFF",
           }}
           onClick={handleRemote}
           className="flex flex-col mt-6 border-2 transition-all ease-out duration-150 border-notaryGrey rounded-xl"
@@ -76,8 +70,8 @@ const Step1 = ({servicedetails, costingdetails}) => {
         </div>
         <div
           style={{
-            borderColor: mobileActive ? "#8b36fd" : "#d5cfe3",
-            backgroundColor: mobileActive ? "#fef2be" : "#FFF",
+            borderColor: activeAgent.mgn ? "#8b36fd" : "#d5cfe3",
+            backgroundColor: activeAgent.mgn ? "#fef2be" : "#FFF",
           }}
           onClick={handleMobile}
           className="flex flex-col mt-6 border-2 transition-all ease-out duration-150 border-notaryGrey rounded-xl"
@@ -92,9 +86,9 @@ const Step1 = ({servicedetails, costingdetails}) => {
         </div>
       </div>
       
-      {signActive ? <NotarySignForm servicedetails={servicedetails}/> : <></>}
-      {remoteActive ? <RonForm costingdetails={costingdetails}/> : <></>}
-      {mobileActive ? <MobNotaryForm costingdetails={costingdetails} /> : <></>}
+      {activeAgent.nsa ? <NotarySignForm formData={formData} setFormData={setFormData} /> : <></>}
+      {activeAgent.ron ? <RonForm /> : <></>}
+      {activeAgent.mgn ? <MobNotaryForm /> : <></>}
     </div>
   );
 };

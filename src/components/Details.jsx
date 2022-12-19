@@ -1,11 +1,16 @@
 import React from 'react';
-import pic from '../assets/p1.png';
 import mailIcon from '../assets/envelope.svg';
 import callIcon from '../assets/phone-call.svg';
 import markerIcon from '../assets/marker.svg';
 import userIcon from '../assets/user.svg';
+import { useData } from '../contexts/DataContext';
 
-const Details = ({personaldetails, businessdetails}) => {
+const Details = () => {
+
+    const {getPersonalDet, getBusinessDet} = useData();
+    const personaldetails = getPersonalDet();
+    const businessdetails = getBusinessDet();
+
   return (
     <div className='hidden container flex-col bg-notaryDarkPurple h-[100vh] md:w-[20vw] md:flex'>
         <h1 className='text-3xl p-4 mb-11 text-notaryYellow font-bold'>BeInsurance</h1>

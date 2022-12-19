@@ -24,10 +24,10 @@ const Step3 = ({ handleSubmit, formData, setFormData }) => {
         <div className="flex flex-col space-y-2">
           <h4>Date</h4>
           <input
-            value={formData.date}
+            value={formData.signingDate}
             className="px-1 rounded-lg border-2 border-solid border-notaryGrey"
             onChange={(e) => {
-              setFormData({ ...formData, date : e.target.value });
+              setFormData({ ...formData, signingDate : e.target.value });
             }}
             type="date"
           />
@@ -35,10 +35,10 @@ const Step3 = ({ handleSubmit, formData, setFormData }) => {
         <div className="flex flex-col space-y-2">
           <h4>Time</h4>
           <input
-            value={formData.time}
+            value={formData.readableTime}
             className="px-1 rounded-lg border-2 border-solid border-notaryGrey"
             onChange={(e) => {
-              setFormData({ ...formData, time : e.target.value });
+              setFormData({ ...formData, readableTime : e.target.value });
             }}
             type="time"
           />
