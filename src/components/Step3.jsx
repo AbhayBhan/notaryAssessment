@@ -1,4 +1,5 @@
 import React from "react";
+import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 
 const Step3 = ({ handleSubmit, formData, setFormData }) => {
   return (
@@ -11,15 +12,13 @@ const Step3 = ({ handleSubmit, formData, setFormData }) => {
         className="flex flex-row gap-16 p-4 flex-wrap"
       >
         <div className="flex flex-col space-y-2">
-          <h4>Enter Signing Location</h4>
-          <input
-            value={formData.location}
-            className="px-1 rounded-lg border-2 w-[40rem] border-solid border-notaryGrey"
-            onChange={(e) => {
-              setFormData({ ...formData, location: e.target.value });
-            }}
-            type="text"
-          />
+          <h4 className="mb-1">Enter Signing Location</h4>
+          <GooglePlacesAutocomplete selectProps={{
+            onChange : e => setFormData({...formData, place : e})
+          }} 
+          apiKey="AIzaSyBcMIlCF4yCRP4GJ-PxA_5xxc4lpFEBysc">
+
+          </GooglePlacesAutocomplete>
         </div>
         <div className="flex flex-col space-y-2">
           <h4>Date</h4>
