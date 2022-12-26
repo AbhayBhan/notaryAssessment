@@ -210,7 +210,7 @@ const Form = () => {
             onClick={() => {
               setStep(step + 1);
             }}
-            className="bg-notaryLightYellow text-notaryDarkGrey font-bold rounded-full px-2 py-1"
+            className="bg-notaryLightYellow text-notaryDarkGrey mb-4 font-bold rounded-full px-2 py-1"
           >
             &rarr;
           </button>

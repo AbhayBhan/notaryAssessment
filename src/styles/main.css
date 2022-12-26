@@ -790,6 +790,10 @@ select {
   margin-top: 1rem;
 }
 
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
 .mt-6 {
   margin-top: 1.5rem;
 }
@@ -802,16 +806,16 @@ select {
   margin-top: 0.5rem;
 }
 
-.mb-4 {
-  margin-bottom: 1rem;
-}
-
 .mt-8 {
   margin-top: 2rem;
 }
 
 .mt-3 {
   margin-top: 0.75rem;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
 }
 
 .mt-\[20vh\] {
@@ -860,10 +864,6 @@ select {
 
 .w-\[73vw\] {
   width: 73vw;
-}
-
-.w-\[40rem\] {
-  width: 40rem;
 }
 
 .w-5 {
@@ -932,10 +932,6 @@ select {
 
 .gap-8 {
   gap: 2rem;
-}
-
-.gap-1 {
-  gap: 0.25rem;
 }
 
 .gap-10 {

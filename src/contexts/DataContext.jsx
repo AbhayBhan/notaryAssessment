@@ -53,13 +53,18 @@ const DataProvider = ({children}) => {
         return params.data.response._id;
     }
 
+    const getTimeDet = () => {
+        return params.data.response.timingInfo[0];
+    }
+
     const val = {
         params,
         getPersonalDet,
         getBusinessDet,
         getServiceDet,
         getCostDet,
-        getUserId
+        getUserId,
+        getTimeDet
     }
 
   return (

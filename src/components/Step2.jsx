@@ -4,7 +4,7 @@ import { useData } from "../contexts/DataContext";
 
 const Step2 = ({ formData, setFormData, activeAgent, witnessList, signerDets }) => {
   return (
-    <div className="container flex flex-col gap-3 p-4 mt-8">
+    <div className="container flex flex-col gap-2 p-4 mt-8">
       <h3 className="text-xl font-bold text-notaryDarkGrey mb-2">
         Signer Details
       </h3>

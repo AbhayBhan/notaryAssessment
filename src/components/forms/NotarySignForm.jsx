@@ -1,30 +1,56 @@
-import React, { useState } from 'react';
-import { useData } from '../../contexts/DataContext';
+import React, { useState } from "react";
+import GEN_ONLINE from "./services/GEN_ONLINE";
+import LSA_OFFLINE from "./services/LSA_OFFLINE";
+import LSA_ONLINE from "./services/LSA_ONLINE";
 
-const NotarySignForm = ({formData, setFormData}) => {
-    const {getServiceDet} = useData();
-    const servicedetails = getServiceDet();
-    const listServices = servicedetails.LSA_ONLINE;
+const NotarySignForm = ({ formData, setFormData }) => {
+  const [showServices, setShowServices] = useState({
+    inoffice: true,
+    online: false,
+    ron: false,
+  });
 
   return (
     <div className="container shadow-xl flex items-start border-2 mt-4 rounded-xl border-notaryGrey flex-col p-4 ">
-      <div className='flex flex-row justify-around gap-10 mx-auto'>
-        <button onClick={() => setFormData({...formData, isOnlineSigning : false})} className='font-bold text-xl transition-all duration-100 hover:text-2xl'>In-office</button>
-        <button onClick={() => setFormData({...formData, isOnlineSigning : true})} className='font-bold text-xl transition-all duration-100 hover:text-2xl'>Online</button>
-        <button onClick={() => setFormData({...formData, isOnlineSigning : false})} className='font-bold text-xl transition-all duration-100 hover:text-2xl'>RON</button>
+      <div className="flex flex-row justify-around gap-10 mx-auto">
+        <button
+          onClick={() => {
+            setFormData({ ...formData, isOnlineSigning: false });
+            setShowServices({ inoffice: true, online: false, ron: false });
+          }}
+          className="font-bold text-xl transition-all duration-100 hover:text-2xl"
+          style={showServices.inoffice ? {color : "#8b36fd"} : {color : "black"}}
+        >
+          In-office
+        </button>
+        <button
+          onClick={() => {
+            setFormData({ ...formData, isOnlineSigning: true });
+            setShowServices({ inoffice: false, online: true, ron: false });
+          }}
+          className="font-bold text-xl transition-all duration-100 hover:text-2xl"
+          style={showServices.online ? {color : "#8b36fd"} : {color : "black"}}
+        >
+          Online
+        </button>
+        <button
+          onClick={() => {
+            setFormData({ ...formData, isOnlineSigning: false });
+            setShowServices({ inoffice: false, online: false, ron: true });
+          }}
+          className="font-bold text-xl transition-all duration-100 hover:text-2xl"
+          style={showServices.ron ? {color : "#8b36fd"} : {color : "black"}}
+        >
+          RON
+        </button>
       </div>
-      <div className='flex mx-auto flex-col gap-3 px-4 mt-16'>
-        {listServices.map((service) => {
-            return(
-              <div key={service.serviceName} className='flex flex-row justify-between space-x-80 mt-2'>
-                <h2 className='text-xl font-bold'>{service.serviceName}</h2>
-                <input type='checkbox' className='w-5 h-5 text-notaryProgressBar bg-gray-100 border-gray-300 focus:ring-notaryYellow rounded-full'></input>
-              </div>
-            )
-        })}
+      <div className="flex mx-auto flex-col gap-3 px-4 mt-16">
+        {showServices.online && <LSA_ONLINE />}
+        {showServices.inoffice && <LSA_OFFLINE />}
+        {showServices.ron && <GEN_ONLINE />}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default NotarySignForm
+export default NotarySignForm;
