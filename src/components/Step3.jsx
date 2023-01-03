@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
-import { Autocomplete, TextField } from "@mui/material";
 import { useData } from "../contexts/DataContext";
 
 const Step3 = ({ handleSubmit, formData, setFormData }) => {
@@ -51,11 +50,13 @@ const Step3 = ({ handleSubmit, formData, setFormData }) => {
         </div>
         <div className="flex flex-col space-y-2">
           <h4>Time</h4>
-          <Autocomplete
-            options={timeList}
-            renderInput={(params) => <TextField {...params} label="select" />}
-          >
-          </Autocomplete>
+          <select name="timedata" className="px-4 rounded-lg border-2 border-solid border-notaryGrey">
+            {timeList.map((timeVal) => {
+              return(
+                <option key={timeVal}>{timeVal}</option>
+              )
+            })}
+          </select>
         </div>
       </div>
       <div className="flex mt-6">

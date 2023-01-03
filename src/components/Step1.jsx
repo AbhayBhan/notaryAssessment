@@ -84,6 +84,22 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
             View Details &rarr;
           </p>
         </div>
+        <div
+          style={{
+            borderColor: activeAgent.mgn ? "#8b36fd" : "#d5cfe3",
+            backgroundColor: activeAgent.mgn ? "#fef2be" : "#FFF",
+          }}
+          onClick={() => console.log('hello')}
+          className="flex flex-col mt-6 border-2 transition-all ease-out duration-150 border-notaryGrey rounded-xl"
+        >
+          <h1 className="text-4xl px-4 mt-5">Others</h1>
+          <p className="text-sm px-4 mt-2 text-notaryDarkGrey">
+            For other Service Categories
+          </p>
+          <p className="text-sm px-4 mb-4 mt-5 font-bold">
+            View Details &rarr;
+          </p>
+        </div>
       </div>
       
       {activeAgent.nsa ? <NotarySignForm formData={formData} setFormData={setFormData} /> : <></>}

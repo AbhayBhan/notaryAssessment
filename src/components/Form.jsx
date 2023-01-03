@@ -128,6 +128,7 @@ const Form = () => {
             disabled={step === 1}
             onClick={() => setStep(step - 1)}
             className="rounded-full bg-notaryGrey p-2"
+            style={step === 1 ? {backgroundColor : '#a5a0b0'} : {}}
           >
             <img src={backIcon} width="10px" />
           </button>
@@ -138,7 +139,7 @@ const Form = () => {
         </div>
       </div>
 
-      <div className="container flex p-2">
+      <div className="container -mt-6 flex p-2">
         {" "}
         {/* Stepper */}
         <div className="inline-flex bg-notaryProgressBar rounded-full p-[8px]"></div>

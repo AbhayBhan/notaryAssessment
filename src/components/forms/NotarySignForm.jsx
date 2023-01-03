@@ -45,9 +45,9 @@ const NotarySignForm = ({ formData, setFormData }) => {
         </button>
       </div>
       <div className="flex mx-auto flex-col gap-3 px-4 mt-16">
-        {showServices.online && <LSA_ONLINE />}
-        {showServices.inoffice && <LSA_OFFLINE />}
-        {showServices.ron && <GEN_ONLINE />}
+        {showServices.online && <LSA_ONLINE formData={formData} setFormData={setFormData} />}
+        {showServices.inoffice && <LSA_OFFLINE formData={formData} setFormData={setFormData} />}
+        {showServices.ron && <GEN_ONLINE formData={formData} setFormData={setFormData} />}
       </div>
     </div>
   );
