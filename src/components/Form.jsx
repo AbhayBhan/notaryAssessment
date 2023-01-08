@@ -38,14 +38,7 @@ const Form = () => {
       companyName: bDet.businessName,
       companyAddress: bDet.businessAddress,
     },
-    signers: {
-      signerFullName: "",
-      type: "signer",
-      phoneNumber: "",
-      signerAddress: null,
-      emailAddress: "",
-    },
-
+    signers: [],
     witnessCount: 0,
     witnessList: {
       fullName: "",
@@ -110,7 +103,6 @@ const Form = () => {
           formData={formData}
           setFormData={setFormData}
           witnessList={formData.witnessList}
-          signerDets={formData.signers}
         />
       );
     } else if (step === 3) {
@@ -142,7 +134,7 @@ const Form = () => {
               setStep(step - 1)
               }}
             className="rounded-full bg-notaryGrey p-2"
-            style={step === 1 ? {backgroundColor : '#a5a0b0'} : {}}
+            style={step === 1 || step === 4? {backgroundColor : '#a5a0b0'} : {}}
           >
             <img src={backIcon} width="10px" />
           </button>

@@ -1,56 +1,70 @@
 import React from "react";
 import "../styles/main.css";
 
-const Step2 = ({ formData, setFormData, activeAgent, witnessList, signerDets }) => {
+const Step2 = ({ formData, setFormData, activeAgent, witnessList }) => {
+
+  const addSigner = () => {
+    setFormData({
+      ...formData,
+      signers: [...formData.signers, { signerFullName: "", phoneNumber: "", emailAddress: "" }]
+    });
+  }
+
   return (
     <div className="container flex flex-col gap-2 p-4 mt-8">
       <h3 className="text-xl font-bold text-notaryDarkGrey mb-2">
         Signer Details
       </h3>
-      <div
-        style={{ borderTop: "2px solid", borderColor: "#a5a0b0" }}
-        className="flex flex-row gap-16 p-4 flex-wrap"
-      >
-        <div className="flex flex-col space-y-2">
-          <h4>Full Name</h4>
-          <input
-            value={formData.signers.signerFullName}
-            className="px-1 rounded-lg border-2 border-solid border-notaryGrey"
-            onChange={(e) => {
-              setFormData({ ...formData, signers : {
-                ...signerDets, signerFullName : e.target.value
-              }});
-            }}
-            type="text"
-          />
+      {formData.signers.map((signer, index) => (
+        <div
+          style={{ borderTop: "2px solid", borderColor: "#a5a0b0" }}
+          className="flex flex-row gap-16 p-4 flex-wrap"
+          key={index}
+        >
+          <div className="flex flex-col space-y-2">
+            <h4>Full Name</h4>
+            <input
+              value={signer.signerFullName}
+              className="px-1 rounded-lg border-2 border-solid border-notaryGrey"
+              onChange={(e) => {
+                const updatedSigners = [...formData.signers];
+                updatedSigners[index].signerFullName = e.target.value;
+                setFormData({ ...formData, signers: updatedSigners });
+              }}
+              type="text"
+            />
+          </div>
+          <div className="flex flex-col space-y-2">
+            <h4>Phone Number</h4>
+            <input
+              value={signer.phoneNumber}
+              className="px-1 rounded-lg border-2 border-solid border-notaryGrey"
+              onChange={(e) => {
+                const updatedSigners = [...formData.signers];
+                updatedSigners[index].phoneNumber = e.target.value;
+                setFormData({ ...formData, signers: updatedSigners });
+              }}
+              type="text"
+            />
+          </div>
+          <div className="flex flex-col space-y-2">
+            <h4>Email</h4>
+            <input
+              value={signer.emailAddress}
+              className="px-1 rounded-lg border-2"
+              onChange={(e) => {
+                const updatedSigners = [...formData.signers];
+                updatedSigners[index].emailAddress = e.target.value;
+                setFormData({ ...formData, signers: updatedSigners });
+              }}
+              type="text"
+            />
+          </div>
         </div>
-        <div className="flex flex-col space-y-2">
-          <h4>Phone Number</h4>
-          <input
-            value={formData.signers.phoneNumber}
-            className="px-1 rounded-lg border-2 border-solid border-notaryGrey"
-            onChange={(e) => {
-              setFormData({ ...formData, signers : {
-                ...signerDets, phoneNumber : e.target.value
-              }});
-            }}
-            type="text"
-          />
-        </div>
-        <div className="flex flex-col space-y-2">
-          <h4>Email</h4>
-          <input
-            value={formData.signers.emailAddress}
-            className="px-1 rounded-lg border-2 border-solid border-notaryGrey"
-            onChange={(e) => {
-              setFormData({ ...formData, signers : {
-                ...signerDets, emailAddress : e.target.value
-              } });
-            }}
-            type="text"
-          />
-        </div>
-      </div>
+      ))}
+      <button className="px-4 py-2 rounded-full self-baseline transition-all duration-100 bg-notaryProgressBar text-white font-bold hover:bg-white hover:text-notaryProgressBar" 
+        onClick={addSigner}
+        >Add Signer</button>
       
       {activeAgent.nsa ?
       <>
