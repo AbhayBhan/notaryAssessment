@@ -12,7 +12,8 @@ module.exports = {
         notaryDarkGrey : "#a5a0b0",
         notaryLightYellow : '#fef2be',
         notaryLightBlue : "#e5edfe",
-        notaryDarkBlue : "#6761ec"
+        notaryDarkBlue : "#6761ec",
+        notaryAlertRed : "#F4989C"
       }
     },
   },

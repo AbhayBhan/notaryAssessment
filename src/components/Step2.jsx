@@ -1,6 +1,5 @@
 import React from "react";
 import "../styles/main.css";
-import { useData } from "../contexts/DataContext";
 
 const Step2 = ({ formData, setFormData, activeAgent, witnessList, signerDets }) => {
   return (

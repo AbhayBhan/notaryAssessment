@@ -12,7 +12,7 @@ const Details = () => {
     const businessdetails = getBusinessDet();
 
   return (
-    <div className='hidden container flex-col bg-notaryDarkPurple h-[100vh] md:w-[20vw] md:flex'>
+    <div className='container flex-col space-y-6 max-h-screen bg-notaryDarkPurple md:w-[20vw] flex'>
         <h1 className='text-3xl p-4 mb-11 text-notaryYellow font-bold'>BeInsurance</h1>
         <img src={personaldetails.photoURL} width='120px' height='120px' className='rounded-full shadow-xl mx-auto mb-6'></img>
         <h1 className='text-3xl text-white font-bold mb-9 mx-auto'>{personaldetails.username}</h1>

@@ -3,6 +3,7 @@ import "../styles/main.css";
 import RonForm from "./forms/RonForm";
 import MobNotaryForm from "./forms/MobNotaryForm";
 import NotarySignForm from "./forms/NotarySignForm";
+import OthersForm from "./forms/OthersForm";
 
 const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
 
@@ -11,7 +12,7 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
       setActiveAgent({...activeAgent, nsa : false});
       return;
     }
-    setActiveAgent({nsa : true, mgn : false, ron : false});
+    setActiveAgent({nsa : true, mgn : false, ron : false, oth : false});
     setFormData({...formData, isRealEstateTransaction : true});
   };
 
@@ -20,7 +21,7 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
       setActiveAgent({...activeAgent, ron : false});
       return;
     }
-    setActiveAgent({nsa : false, mgn : false, ron : true});
+    setActiveAgent({nsa : false, mgn : false, ron : true, oth : false});
     setFormData({...formData, isRealEstateTransaction : false});
   };
 
@@ -29,9 +30,18 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
       setActiveAgent({...activeAgent, mgn : false});
       return;
     }
-    setActiveAgent({nsa : false, mgn : true, ron : false});
+    setActiveAgent({nsa : false, mgn : true, ron : false, oth : false});
     setFormData({...formData, isRealEstateTransaction : false});
   };
+
+  const handleOthers = () => {
+    if(activeAgent.oth){
+      setActiveAgent({...activeAgent, oth : false});
+      return;
+    }
+    setActiveAgent({nsa : false, mgn : false, ron : false, oth : true});
+    setFormData({...formData, isRealEstateTransaction : false});
+  }
 
   return (
     <div className="container flex flex-row p-2 space-x-4 mx-auto">
@@ -86,10 +96,10 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
         </div>
         <div
           style={{
-            borderColor: activeAgent.mgn ? "#8b36fd" : "#d5cfe3",
-            backgroundColor: activeAgent.mgn ? "#fef2be" : "#FFF",
+            borderColor: activeAgent.oth ? "#8b36fd" : "#d5cfe3",
+            backgroundColor: activeAgent.oth ? "#fef2be" : "#FFF",
           }}
-          onClick={() => console.log('hello')}
+          onClick={handleOthers}
           className="flex flex-col mt-6 border-2 transition-all ease-out duration-150 border-notaryGrey rounded-xl"
         >
           <h1 className="text-4xl px-4 mt-5">Others</h1>
@@ -105,6 +115,7 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
       {activeAgent.nsa ? <NotarySignForm formData={formData} setFormData={setFormData} /> : <></>}
       {activeAgent.ron ? <RonForm /> : <></>}
       {activeAgent.mgn ? <MobNotaryForm /> : <></>}
+      {activeAgent.oth ? <OthersForm formData={formData} setFormData={setFormData} signerDets={formData.signers}/> : <></>}
     </div>
   );
 };

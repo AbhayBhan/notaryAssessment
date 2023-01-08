@@ -14,16 +14,18 @@ const Form = () => {
   const pDet = getPersonalDet();
   const bDet = getBusinessDet();
   const uId = getUserId();
+  const [err, setErr] = useState("");
   const [activeAgent, setActiveAgent] = useState({
     nsa: false,
     mgn: false,
     ron: false,
+    oth: false,
   });
   const [formData, setFormData] = useState({
     activityHistory: [],
     isRealEstateTransaction: false,
     isOnlineSigning: false,
-    escrowNumber: null,
+    escrowNumber: "",
     loanNo: "",
     place: null,
     serviceDetails: null,
@@ -80,9 +82,14 @@ const Form = () => {
     axios.post('https://notaryapp-staging.herokuapp.com/plugin/submitApptDetails',formData)
     .then(() => {
       console.log('sent!');
+      console.log(formData);
+      setErr('');
       setStep(step+1);
-    }).catch((err) => {
-      console.log(err);
+    }).catch((error) => {
+      setErr(error.message);
+      setTimeout(() => {
+        setErr('');
+      },10000)
     })
   };
 
@@ -112,6 +119,7 @@ const Form = () => {
           handleSubmit={handleSubmit}
           formData={formData}
           setFormData={setFormData}
+          err={err}
         />
       );
     } else {
@@ -125,8 +133,14 @@ const Form = () => {
         {/*Previous Button Functionality*/}
         <div className="flex-1 flex-row p-4">
           <button
-            disabled={step === 1}
-            onClick={() => setStep(step - 1)}
+            disabled={step === 1 || step === 4}
+            onClick={() => {
+              if(activeAgent.oth){
+                setStep(step - 2);
+                return;
+              }
+              setStep(step - 1)
+              }}
             className="rounded-full bg-notaryGrey p-2"
             style={step === 1 ? {backgroundColor : '#a5a0b0'} : {}}
           >
@@ -209,6 +223,10 @@ const Form = () => {
           <button
             disabled={step === 4}
             onClick={() => {
+              if(activeAgent.oth){
+                setStep(step + 2);
+                return;
+              }
               setStep(step + 1);
             }}
             className="bg-notaryLightYellow text-notaryDarkGrey mb-4 font-bold rounded-full px-2 py-1"

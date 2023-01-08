@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import { useData } from "../contexts/DataContext";
 
-const Step3 = ({ handleSubmit, formData, setFormData }) => {
+const Step3 = ({ handleSubmit, formData, setFormData, err }) => {
   const {getTimeDet} = useData();
   const [date, selectDate] =  useState('')
   const [timeList, setTimeList] = useState([]);
@@ -15,8 +15,23 @@ const Step3 = ({ handleSubmit, formData, setFormData }) => {
 
     const timeGroup = getTimeDet();
     setTimeList(timeGroup[formattedDate]);
-    
   },[date]);
+
+  const AvailTime = () => {
+    if(timeList){
+      return(
+      timeList.map((timeVal) => {
+        return(
+          <option key={timeVal}>{timeVal}</option>
+        )
+      }))
+    }
+    else{
+      return(
+        <option>No Slots</option>
+      )
+    }
+  }
 
   return (
     <div>
@@ -51,11 +66,12 @@ const Step3 = ({ handleSubmit, formData, setFormData }) => {
         <div className="flex flex-col space-y-2">
           <h4>Time</h4>
           <select name="timedata" className="px-4 rounded-lg border-2 border-solid border-notaryGrey">
-            {timeList.map((timeVal) => {
+            {/* {timeList && timeList.map((timeVal) => {
               return(
                 <option key={timeVal}>{timeVal}</option>
               )
-            })}
+            })} */}
+            <AvailTime />
           </select>
         </div>
       </div>
@@ -66,6 +82,9 @@ const Step3 = ({ handleSubmit, formData, setFormData }) => {
         >
           Schedule Appointment
         </button>
+      </div>
+      <div className="flex flex-row justify-center mt-6">
+      {err ? <div className="mx-auto font-bold bg-notaryAlertRed text-white px-4 py-2 rounded-xl">{err}</div> : <div></div>}
       </div>
     </div>
   );

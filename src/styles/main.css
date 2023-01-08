@@ -770,6 +770,10 @@ select {
   margin-left: 3rem;
 }
 
+.-mt-6 {
+  margin-top: -1.5rem;
+}
+
 .mt-1 {
   margin-top: 0.25rem;
 }
@@ -834,16 +838,8 @@ select {
   margin-left: 16rem;
 }
 
-.-mt-4 {
-  margin-top: -1rem;
-}
-
-.-mt-5 {
-  margin-top: -1.25rem;
-}
-
-.-mt-6 {
-  margin-top: -1.5rem;
+.mb-16 {
+  margin-bottom: 4rem;
 }
 
 .inline-block {
@@ -858,16 +854,16 @@ select {
   display: inline-flex;
 }
 
-.hidden {
-  display: none;
-}
-
 .h-\[100vh\] {
   height: 100vh;
 }
 
 .h-5 {
   height: 1.25rem;
+}
+
+.max-h-screen {
+  max-height: 100vh;
 }
 
 .w-\[87vw\] {
@@ -880,6 +876,22 @@ select {
 
 .w-5 {
   width: 1.25rem;
+}
+
+.w-14 {
+  width: 3.5rem;
+}
+
+.w-\[\] {
+  width: ;
+}
+
+.w-64 {
+  width: 16rem;
+}
+
+.max-w-md {
+  max-width: 28rem;
 }
 
 .flex-1 {
@@ -950,6 +962,12 @@ select {
   gap: 2.5rem;
 }
 
+.space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
@@ -972,6 +990,12 @@ select {
   --tw-space-x-reverse: 0;
   margin-right: calc(20rem * var(--tw-space-x-reverse));
   margin-left: calc(20rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-y-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
 }
 
 .rounded-full {
@@ -1027,6 +1051,11 @@ select {
 .bg-notaryLightBlue {
   --tw-bg-opacity: 1;
   background-color: rgb(229 237 254 / var(--tw-bg-opacity));
+}
+
+.bg-notaryAlertRed {
+  --tw-bg-opacity: 1;
+  background-color: rgb(244 152 156 / var(--tw-bg-opacity));
 }
 
 .bg-gray-100 {
@@ -1093,6 +1122,11 @@ select {
   padding-bottom: 0.75rem;
 }
 
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
@@ -1116,6 +1150,11 @@ select {
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .font-bold {
@@ -1211,10 +1250,6 @@ select {
 }
 
 @media (min-width: 768px) {
-  .md\:flex {
-    display: flex;
-  }
-
   .md\:w-\[20vw\] {
     width: 20vw;
   }
