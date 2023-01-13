@@ -13,7 +13,7 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
       return;
     }
     setActiveAgent({nsa : true, mgn : false, ron : false, oth : false});
-    setFormData({...formData, isRealEstateTransaction : true});
+    setFormData({...formData, isRealEstateTransaction : true, isOnlineSigning :  true});
   };
 
   const handleRemote = () => {
@@ -22,7 +22,7 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
       return;
     }
     setActiveAgent({nsa : false, mgn : false, ron : true, oth : false});
-    setFormData({...formData, isRealEstateTransaction : false});
+    setFormData({...formData, isRealEstateTransaction : false, isOnlineSigning : true});
   };
 
   const handleMobile = () => {
@@ -31,7 +31,7 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
       return;
     }
     setActiveAgent({nsa : false, mgn : true, ron : false, oth : false});
-    setFormData({...formData, isRealEstateTransaction : false});
+    setFormData({...formData, isRealEstateTransaction : false, isOnlineSigning : false});
   };
 
   const handleOthers = () => {
@@ -40,7 +40,7 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
       return;
     }
     setActiveAgent({nsa : false, mgn : false, ron : false, oth : true});
-    setFormData({...formData, isRealEstateTransaction : false});
+    setFormData({...formData, isRealEstateTransaction : false, isOnlineSigning : false});
   }
 
   return (

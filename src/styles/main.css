@@ -745,6 +745,14 @@ select {
   left: 80%;
 }
 
+.left-0 {
+  left: 0px;
+}
+
+.top-0 {
+  top: 0px;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -866,8 +874,36 @@ select {
   height: 1.25rem;
 }
 
-.max-h-screen {
+.h-auto {
+  height: auto;
+}
+
+.h-\[100\] {
+  height: 100;
+}
+
+.h-\[100\%\] {
+  height: 100%;
+}
+
+.h-\[80vh\] {
+  height: 80vh;
+}
+
+.max-h-\[\] {
+  max-height: ;
+}
+
+.max-h-\[80vh\] {
+  max-height: 80vh;
+}
+
+.max-h-\[100vh\] {
   max-height: 100vh;
+}
+
+.max-h-\[vh\] {
+  max-height: vh;
 }
 
 .w-\[87vw\] {
@@ -994,6 +1030,26 @@ select {
   align-self: baseline;
 }
 
+.overflow-auto {
+  overflow: auto;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+.overflow-y-hidden {
+  overflow-y: hidden;
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll;
+}
+
 .rounded-full {
   border-radius: 9999px;
 }
@@ -1042,11 +1098,6 @@ select {
 .bg-notaryLightYellow {
   --tw-bg-opacity: 1;
   background-color: rgb(254 242 190 / var(--tw-bg-opacity));
-}
-
-.bg-notaryYellow {
-  --tw-bg-opacity: 1;
-  background-color: rgb(253 228 130 / var(--tw-bg-opacity));
 }
 
 .bg-notaryLightBlue {
@@ -1126,6 +1177,30 @@ select {
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
+}
+
+.pb-1 {
+  padding-bottom: 0.25rem;
+}
+
+.pb-16 {
+  padding-bottom: 4rem;
+}
+
+.pb-\[\] {
+  padding-bottom: ;
+}
+
+.pb-\[1000px\] {
+  padding-bottom: 1000px;
+}
+
+.pb-\[500px\] {
+  padding-bottom: 500px;
+}
+
+.pb-\[400px\] {
+  padding-bottom: 400px;
 }
 
 .text-3xl {
@@ -1230,9 +1305,9 @@ select {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
-.hover\:bg-notaryDarkGrey:hover {
+.hover\:bg-white:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(165 160 176 / var(--tw-bg-opacity));
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-notaryDarkBlue:hover {
@@ -1240,29 +1315,19 @@ select {
   background-color: rgb(103 97 236 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-white:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
 .hover\:text-2xl:hover {
   font-size: 1.5rem;
   line-height: 2rem;
 }
 
-.hover\:text-notaryYellow:hover {
+.hover\:text-notaryProgressBar:hover {
   --tw-text-opacity: 1;
-  color: rgb(253 228 130 / var(--tw-text-opacity));
+  color: rgb(139 54 253 / var(--tw-text-opacity));
 }
 
 .hover\:text-notaryLightBlue:hover {
   --tw-text-opacity: 1;
   color: rgb(229 237 254 / var(--tw-text-opacity));
-}
-
-.hover\:text-notaryProgressBar:hover {
-  --tw-text-opacity: 1;
-  color: rgb(139 54 253 / var(--tw-text-opacity));
 }
 
 .focus\:ring-notaryYellow:focus {

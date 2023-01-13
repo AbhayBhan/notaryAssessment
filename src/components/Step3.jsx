@@ -33,6 +33,10 @@ const Step3 = ({ handleSubmit, formData, setFormData, err }) => {
     }
   }
 
+  const handlePlaceSelect = (e) => {
+    setFormData({...formData, place : {...formData.place, completeAddress : e.label, place_id : e.value.place_id}})
+  } 
+
   return (
     <div>
       <h3 className="text-xl font-bold p-2 mt-3 text-notaryDarkGrey mb-2">
@@ -42,15 +46,16 @@ const Step3 = ({ handleSubmit, formData, setFormData, err }) => {
         style={{ borderTop: "2px solid", borderColor: "#a5a0b0" }}
         className="flex flex-row gap-16 p-4 flex-wrap"
       >
+      {!formData.isOnlineSigning ?
         <div className="flex flex-col space-y-2">
           <h4 className="mb-1">Enter Signing Location</h4>
           <GooglePlacesAutocomplete selectProps={{
-            onChange : e => setFormData({...formData, place : e})
+            onChange : e => handlePlaceSelect(e)
           }} 
           apiKey="AIzaSyBcMIlCF4yCRP4GJ-PxA_5xxc4lpFEBysc">
 
           </GooglePlacesAutocomplete>
-        </div>
+        </div> : <></>}
         <div className="flex flex-col space-y-2">
           <h4>Date</h4>
           <input

@@ -17,6 +17,7 @@ const NotarySignForm = ({ formData, setFormData }) => {
           onClick={() => {
             setFormData({ ...formData, isOnlineSigning: false });
             setShowServices({ inoffice: true, online: false, ron: false });
+            setFormData({...formData, place : {...formData.place, isInOffice : true}})
           }}
           className="font-bold text-xl transition-all duration-100 hover:text-2xl"
           style={showServices.inoffice ? {color : "#8b36fd"} : {color : "black"}}
@@ -27,6 +28,7 @@ const NotarySignForm = ({ formData, setFormData }) => {
           onClick={() => {
             setFormData({ ...formData, isOnlineSigning: true });
             setShowServices({ inoffice: false, online: true, ron: false });
+            setFormData({...formData, place : {...formData.place, isInOffice : false}})
           }}
           className="font-bold text-xl transition-all duration-100 hover:text-2xl"
           style={showServices.online ? {color : "#8b36fd"} : {color : "black"}}
@@ -37,6 +39,7 @@ const NotarySignForm = ({ formData, setFormData }) => {
           onClick={() => {
             setFormData({ ...formData, isOnlineSigning: false });
             setShowServices({ inoffice: false, online: false, ron: true });
+            setFormData({...formData, place : {...formData.place, isInOffice : false}})
           }}
           className="font-bold text-xl transition-all duration-100 hover:text-2xl"
           style={showServices.ron ? {color : "#8b36fd"} : {color : "black"}}

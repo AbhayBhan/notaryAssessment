@@ -6,12 +6,16 @@ const RonForm = () => {
   const costingdetails = getCostDet();
   const [quote, setQuote] = useState(costingdetails.GEN_ONLINE.baseNotarisationCost);
   const [signatures, SetSignatures] = useState(0);
+  const [extraWitness, setExtraWitness] = useState(0); 
+  const [extraSigners, setExtraSigners] = useState(0);
 
   useEffect(() => {
     const baseCost = costingdetails.GEN_ONLINE.baseNotarisationCost
-    const extraCost = costingdetails.GEN_ONLINE.extraSignatureCost;
-    setQuote(baseCost + (signatures * extraCost));
-  },[signatures])
+    const extraSignCost = costingdetails.GEN_ONLINE.extraSignatureCost;
+    const extraWitnessCost = costingdetails.GEN_ONLINE.perWitnessCost;
+    const extraSignersCost = costingdetails.GEN_ONLINE.extraSignersCost;
+    setQuote(baseCost + (signatures * extraSignCost) + (extraWitness * extraWitnessCost) + (extraSigners * extraSignersCost));
+  },[signatures, extraWitness, extraSigners])
 
   return (
     <div className="container shadow-xl flex items-start border-2 mt-4 rounded-xl border-notaryGrey flex-col p-4 ">
@@ -30,11 +34,11 @@ const RonForm = () => {
       </div>
       <div className="flex flex-row gap-8 px-4 mt-8">
         <h2 className="font-semibold text-xl">Number of Signers</h2>
-        <input className="border-2 rounded-lg border-notaryGrey" type="text" />
+        <input onChange={(e) => setExtraSigners(e.target.value)} min='0' className="border-2 rounded-lg border-notaryGrey" type="number" />
       </div>
       <div className="flex flex-row gap-8 px-4 mt-8">
         <h2 className="font-semibold text-xl">Do you Need Witness?</h2>
-        <input className="border-2 rounded-lg border-notaryGrey" type="text" />
+        <input onChange={(e) => setExtraWitness(e.target.value)} min='0' className="border-2 rounded-lg border-notaryGrey" type="number" />
       </div>
       <h1 className="text-xl mt-12 text-notaryDarkGrey ml-64 font-bold px-4">
         Your Approximate Quote : {quote}$

@@ -27,26 +27,31 @@ const Form = () => {
     isOnlineSigning: false,
     escrowNumber: "",
     loanNo: "",
-    place: null,
+    place: {
+      isInOffice : false,
+      completeAddress : "",
+      lat : "",
+      lon : "",
+      zipcode : "",
+      city : "",
+      state : "",
+      timeZone : "",
+      area : "",
+      streetAddress : "",
+      place_id : ""
+    },
     serviceDetails: null,
     customerDetails: {
-      customerFirstName: pDet.firstName,
-      customerLastName: pDet.lastName,
+      customerName: "",
       type: "Customer",
-      customerPhoneNumber: pDet.phoneNumber,
-      customerEmailAddress: pDet.email,
-      companyName: bDet.businessName,
+      customerPhoneNumber: "",
+      customerEmailAddress: "",
+      companyName: "",
       companyAddress: bDet.businessAddress,
     },
     signers: [],
     witnessCount: 0,
-    witnessList: {
-      fullName: "",
-      type: "witness",
-      phoneNumber: "",
-      address: null,
-      emailAddress: "",
-    },
+    witnessList: [],
     propertyAddress: "",
     signingDate: "",
     signingDateTimeStamp: "",
@@ -72,6 +77,9 @@ const Form = () => {
   });
 
   const handleSubmit = () => {
+    if(activeAgent.ron){
+      setFormData({...formData, customerDetails : null});
+    }
     axios.post('https://notaryapp-staging.herokuapp.com/plugin/submitApptDetails',formData)
     .then(() => {
       console.log('sent!');
@@ -102,7 +110,6 @@ const Form = () => {
           activeAgent={activeAgent}
           formData={formData}
           setFormData={setFormData}
-          witnessList={formData.witnessList}
         />
       );
     } else if (step === 3) {
