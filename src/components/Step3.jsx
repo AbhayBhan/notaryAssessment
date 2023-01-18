@@ -1,41 +1,51 @@
 import React, { useState, useEffect } from "react";
-import GooglePlacesAutocomplete from "react-google-places-autocomplete";
+import GooglePlacesAutocomplete, {
+  geocodeByPlaceId,
+  getLatLng,
+} from "react-google-places-autocomplete";
 import { useData } from "../contexts/DataContext";
 
 const Step3 = ({ handleSubmit, formData, setFormData, err }) => {
-  const {getTimeDet} = useData();
-  const [date, selectDate] =  useState('')
+  const { getTimeDet } = useData();
+  const [date, selectDate] = useState("");
   const [timeList, setTimeList] = useState([]);
 
   useEffect(() => {
-    if(date === '') return;
+    if (date === "") return;
 
-    const [year, month, day] = date.split('-');
-    const formattedDate = [day, month, year].join('/');
+    const [year, month, day] = date.split("-");
+    const formattedDate = [day, month, year].join("/");
 
     const timeGroup = getTimeDet();
     setTimeList(timeGroup[formattedDate]);
-  },[date]);
+  }, [date]);
 
   const AvailTime = () => {
-    if(timeList){
-      return(
-      timeList.map((timeVal) => {
-        return(
-          <option key={timeVal}>{timeVal}</option>
-        )
-      }))
+    if (timeList) {
+      return timeList.map((timeVal) => {
+        return <option key={timeVal}>{timeVal}</option>;
+      });
+    } else {
+      return <option>No Slots</option>;
     }
-    else{
-      return(
-        <option>No Slots</option>
-      )
-    }
-  }
+  };
 
   const handlePlaceSelect = (e) => {
-    setFormData({...formData, place : {...formData.place, completeAddress : e.label, place_id : e.value.place_id}})
-  } 
+    geocodeByPlaceId(e.value.place_id)
+      .then((res) => getLatLng(res[0]))
+      .then(({ lat, lng }) =>
+        setFormData({
+          ...formData,
+          place: {
+            ...formData.place,
+            lat: lat,
+            lon: lng,
+            completeAddress: e.label,
+            place_id: e.value.place_id,
+          },
+        })
+      );
+  };
 
   return (
     <div>
@@ -46,23 +56,26 @@ const Step3 = ({ handleSubmit, formData, setFormData, err }) => {
         style={{ borderTop: "2px solid", borderColor: "#a5a0b0" }}
         className="flex flex-row gap-16 p-4 flex-wrap"
       >
-      {!formData.isOnlineSigning ?
-        <div className="flex flex-col space-y-2">
-          <h4 className="mb-1">Enter Signing Location</h4>
-          <GooglePlacesAutocomplete selectProps={{
-            onChange : e => handlePlaceSelect(e)
-          }} 
-          apiKey="AIzaSyBcMIlCF4yCRP4GJ-PxA_5xxc4lpFEBysc">
-
-          </GooglePlacesAutocomplete>
-        </div> : <></>}
+        {!formData.isOnlineSigning ? (
+          <div className="flex flex-col space-y-2">
+            <h4 className="mb-1">Enter Signing Location</h4>
+            <GooglePlacesAutocomplete
+              selectProps={{
+                onChange: (e) => handlePlaceSelect(e),
+              }}
+              apiKey="AIzaSyBcMIlCF4yCRP4GJ-PxA_5xxc4lpFEBysc"
+            ></GooglePlacesAutocomplete>
+          </div>
+        ) : (
+          <></>
+        )}
         <div className="flex flex-col space-y-2">
           <h4>Date</h4>
           <input
             value={formData.signingDate}
             className="px-1 rounded-lg border-2 border-solid border-notaryGrey"
             onChange={(e) => {
-              setFormData({ ...formData, signingDate : e.target.value });
+              setFormData({ ...formData, signingDate: e.target.value });
               selectDate(e.target.value);
             }}
             type="date"
@@ -70,12 +83,10 @@ const Step3 = ({ handleSubmit, formData, setFormData, err }) => {
         </div>
         <div className="flex flex-col space-y-2">
           <h4>Time</h4>
-          <select name="timedata" className="px-4 rounded-lg border-2 border-solid border-notaryGrey">
-            {/* {timeList && timeList.map((timeVal) => {
-              return(
-                <option key={timeVal}>{timeVal}</option>
-              )
-            })} */}
+          <select
+            name="timedata"
+            className="px-4 rounded-lg border-2 border-solid border-notaryGrey"
+          >
             <AvailTime />
           </select>
         </div>
@@ -89,7 +100,13 @@ const Step3 = ({ handleSubmit, formData, setFormData, err }) => {
         </button>
       </div>
       <div className="flex flex-row justify-center mt-6">
-      {err ? <div className="mx-auto font-bold bg-notaryAlertRed text-white px-4 py-2 rounded-xl">{err}</div> : <div></div>}
+        {err ? (
+          <div className="mx-auto font-bold bg-notaryAlertRed text-white px-4 py-2 rounded-xl">
+            {err}
+          </div>
+        ) : (
+          <div></div>
+        )}
       </div>
     </div>
   );

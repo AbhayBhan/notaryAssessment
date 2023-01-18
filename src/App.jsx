@@ -8,7 +8,7 @@ function App() {
   
   return (
     <DataProvider>
-    <div className='container flex flex-row justify-start'>
+    <div className='container flex flex-col relative justify-start md:flex-row'>
         <Details />
         <Form />
     </div>

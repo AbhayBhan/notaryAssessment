@@ -10,8 +10,7 @@ import { useData } from "../contexts/DataContext";
 
 const Form = () => {
   const [step, setStep] = useState(1);
-  const { getPersonalDet, getBusinessDet, getUserId } = useData();
-  const pDet = getPersonalDet();
+  const { getBusinessDet, getUserId } = useData();
   const bDet = getBusinessDet();
   const uId = getUserId();
   const [err, setErr] = useState("");
@@ -126,7 +125,7 @@ const Form = () => {
     }
   };
   return (
-    <div className="relative container w-[87vw] h-[100vh] p-2">
+    <div className="relative container w-[87vw] h-[100vh] p-2 md:ml-[18vw]">
       <div className="flex flex-row mb-10">
         {" "}
         {/*Previous Button Functionality*/}

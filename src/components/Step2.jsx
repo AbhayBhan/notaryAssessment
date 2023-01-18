@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../styles/main.css";
+import 'react-phone-number-input/style.css';
+import PhoneInput from 'react-phone-number-input';
 
 const Step2 = ({ formData, setFormData, activeAgent}) => {
 
@@ -45,16 +47,15 @@ const Step2 = ({ formData, setFormData, activeAgent}) => {
           </div>
           <div className="flex flex-col space-y-2">
             <h4>Phone Number</h4>
-            <input
+            <PhoneInput
+              defaultCountry="US"
+              placeholder="Enter phone number"
               value={signer.phoneNumber}
-              className="px-1 rounded-lg border-2 border-solid border-notaryGrey"
               onChange={(e) => {
                 const updatedSigners = [...formData.signers];
-                updatedSigners[index].phoneNumber = e.target.value;
+                updatedSigners[index].phoneNumber = e;
                 setFormData({ ...formData, signers: updatedSigners });
-              }}
-              type="text"
-            />
+              }}/>
           </div>
           <div className="flex flex-col space-y-2">
             <h4>Email</h4>
@@ -121,13 +122,13 @@ const Step2 = ({ formData, setFormData, activeAgent}) => {
         </div>
         <div className="flex flex-col space-y-2">
           <h4>Phone Number</h4>
-          <input
+          <PhoneInput
+            defaultCountry="US"
+            placeholder="Enter phone number"
             value={formData.customerDetails.customerPhoneNumber}
-            className="px-1 rounded-lg border-2 border-solid border-notaryGrey"
             onChange={(e) => {
-              setFormData({ ...formData, customerDetails : {...formData.customerDetails, customerPhoneNumber : e.target.value} });
+              setFormData({ ...formData, customerDetails : {...formData.customerDetails, customerPhoneNumber : e}});
             }}
-            type="text"
           />
         </div>
       </div>
@@ -166,13 +167,13 @@ const Step2 = ({ formData, setFormData, activeAgent}) => {
         </div>
         <div className="flex flex-col space-y-2">
           <h4>Witness Phone</h4>
-          <input
+          <PhoneInput
+            defaultCountry="US"
+            placeholder="Enter phone number"
             value={witness.witnessPhone}
-            className="px-1 rounded-lg border-2 border-solid border-notaryGrey"
-            type="text"
             onChange={(e) => {
               const updatedWitness = [...formData.witnessList];
-              updatedWitness[index].witnessPhone = e.target.value;
+              updatedWitness[index].witnessPhone = e;
               setFormData({ ...formData, witnessList: updatedWitness });
             }}
           />
