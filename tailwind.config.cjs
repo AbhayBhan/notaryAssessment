@@ -8,6 +8,7 @@ module.exports = {
         notaryYellow : "#fde482",
         notaryGrey : "#d5cfe3",
         notaryTextPurple : "#645688",
+        notarySideBarPurple : "#673AB7",
         notaryProgressBar : "#8b36fd",
         notaryDarkGrey : "#a5a0b0",
         notaryLightYellow : '#fef2be',

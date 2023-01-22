@@ -75,7 +75,7 @@ const Form = () => {
     isCancelledBefore: false,
   });
 
-  const handleSubmit = () => {
+  const handleSubmit = (setBtnLoading) => {
     if(activeAgent.ron){
       setFormData({...formData, customerDetails : null});
     }
@@ -90,6 +90,8 @@ const Form = () => {
       setTimeout(() => {
         setErr('');
       },10000)
+    }).finally(() => {
+      setBtnLoading(false);
     })
   };
 
@@ -151,11 +153,10 @@ const Form = () => {
         </div>
       </div>
 
-      <div className="container -mt-6 flex p-2">
-        {" "}
+      <div className="container flex p-2 md:-mt-6">
         {/* Stepper */}
-        <div className="inline-flex bg-notaryProgressBar rounded-full p-[8px]"></div>
-        <div className="inline-flex mt-1 relative bg-notaryGrey ml-6 mb-2 p-[0.5px] w-[73vw]">
+        <div className="flex bg-notaryProgressBar rounded-full p-[8px]"></div>
+        <div className="flex mt-1 relative bg-notaryGrey ml-6 mb-2 p-[0.5px] w-[73vw]">
           <div
             style={{
               width:

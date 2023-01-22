@@ -24,7 +24,7 @@ const GEN_ONLINE = ({formData, setFormData}) => {
         return (
           <div
             key={service.serviceName}
-            className="flex flex-row justify-between space-x-80 mt-2"
+            className="flex flex-row space-x-24 mt-2 justify-between md:space-x-80"
           >
             <h2 className="text-xl font-bold">{service.serviceName}</h2>
             <input

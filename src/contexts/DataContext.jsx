@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import PageLoader from '../components/PageLoader';
 
 const DataContext = createContext();
 
@@ -69,7 +70,7 @@ const DataProvider = ({children}) => {
 
   return (
     <DataContext.Provider value={val}>
-        {!loading && children}
+        {!loading ? children : <PageLoader />}
     </DataContext.Provider>
   )
 }

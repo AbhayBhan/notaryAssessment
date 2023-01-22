@@ -4,21 +4,30 @@ import GooglePlacesAutocomplete, {
   getLatLng,
 } from "react-google-places-autocomplete";
 import { useData } from "../contexts/DataContext";
+import '../styles/loader.css';
 
 const Step3 = ({ handleSubmit, formData, setFormData, err }) => {
   const { getTimeDet } = useData();
   const [date, selectDate] = useState("");
   const [timeList, setTimeList] = useState([]);
+  const [btnLoading, setBtnLoading] = useState(false);
+  const defTimeList = ["1AM","2AM","3AM","4AM","5AM","6AM","7AM","8AM","9AM","10AM","11AM","12PM","1PM","2PM"]
 
   useEffect(() => {
     if (date === "") return;
 
     const [year, month, day] = date.split("-");
     const formattedDate = [day, month, year].join("/");
+    setFormData({ ...formData, signingDate: formattedDate });
 
     const timeGroup = getTimeDet();
     setTimeList(timeGroup[formattedDate]);
   }, [date]);
+
+  const handleSchedule = () => {
+    setBtnLoading(true);
+    handleSubmit(setBtnLoading);
+  }
 
   const AvailTime = () => {
     if (timeList) {
@@ -26,7 +35,9 @@ const Step3 = ({ handleSubmit, formData, setFormData, err }) => {
         return <option key={timeVal}>{timeVal}</option>;
       });
     } else {
-      return <option>No Slots</option>;
+      return defTimeList.map((timeVal) => {
+        return <option key={timeVal}>{timeVal}</option>
+      })
     }
   };
 
@@ -72,10 +83,8 @@ const Step3 = ({ handleSubmit, formData, setFormData, err }) => {
         <div className="flex flex-col space-y-2">
           <h4>Date</h4>
           <input
-            value={formData.signingDate}
             className="px-1 rounded-lg border-2 border-solid border-notaryGrey"
             onChange={(e) => {
-              setFormData({ ...formData, signingDate: e.target.value });
               selectDate(e.target.value);
             }}
             type="date"
@@ -84,8 +93,10 @@ const Step3 = ({ handleSubmit, formData, setFormData, err }) => {
         <div className="flex flex-col space-y-2">
           <h4>Time</h4>
           <select
+            value={formData.signingTime}
             name="timedata"
             className="px-4 rounded-lg border-2 border-solid border-notaryGrey"
+            onChange={(e) => setFormData({...formData, signingTime : e.target.value})}
           >
             <AvailTime />
           </select>
@@ -93,10 +104,13 @@ const Step3 = ({ handleSubmit, formData, setFormData, err }) => {
       </div>
       <div className="flex mt-6">
         <button
-          onClick={handleSubmit}
+          onClick={handleSchedule}
+          disabled={btnLoading}
           className="px-6 py-3 bg-notaryLightBlue rounded-lg text-notaryDarkBlue mx-auto hover:text-notaryLightBlue hover:bg-notaryDarkBlue transition-all duration-150 ease-out"
         >
-          Schedule Appointment
+          {btnLoading ? 
+          <div className="btn-loader"></div>
+          : <>Schedule Appointment</> }
         </button>
       </div>
       <div className="flex flex-row justify-center mt-6">

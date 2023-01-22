@@ -44,7 +44,7 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
   }
 
   return (
-    <div className="container flex flex-row p-2 space-x-4 mx-auto">
+    <div className="container flex flex-col p-2 space-x-4 mx-auto md:flex-row">
       <div className="container flex flex-col gap-3 space-y-0">
         <div
           style={{
