@@ -23,24 +23,24 @@ const RonForm = () => {
         Calculate your Costs for RON!
       </h1>
       <div className="flex flex-row gap-8 px-4 mt-16">
-        <h2 className="font-semibold text-xl">No. of Extra Signatures</h2>
+        <h2 className="font-semibold text-md md:text-xl">No. of Extra Signatures</h2>
         <input onChange={(e) => SetSignatures(e.target.value)} min="0" className="border-2 rounded-lg border-notaryGrey" type="number" />
       </div>
       <div className="flex flex-row gap-8 px-4 mt-8">
-        <h2 className="font-semibold text-xl">
+        <h2 className="font-semibold text-md md:text-xl">
           How Many Files will you be uploading in the session
         </h2>
         <input className="border-2 rounded-lg border-notaryGrey" type="text" />
       </div>
       <div className="flex flex-row gap-8 px-4 mt-8">
-        <h2 className="font-semibold text-xl">Number of Signers</h2>
+        <h2 className="font-semibold text-md md:text-xl">Number of Signers</h2>
         <input onChange={(e) => setExtraSigners(e.target.value)} min='0' className="border-2 rounded-lg border-notaryGrey" type="number" />
       </div>
       <div className="flex flex-row gap-8 px-4 mt-8">
-        <h2 className="font-semibold text-xl">Do you Need Witness?</h2>
+        <h2 className="font-semibold text-md md:text-xl">Do you Need Witness?</h2>
         <input onChange={(e) => setExtraWitness(e.target.value)} min='0' className="border-2 rounded-lg border-notaryGrey" type="number" />
       </div>
-      <h1 className="text-xl mt-12 text-notaryDarkGrey ml-64 font-bold px-4">
+      <h1 className="text-md mt-12 text-notaryDarkGrey ml-48 font-bold px-4 md:ml-64 md:text-xl">
         Your Approximate Quote : {quote}$
       </h1>
     </div>
