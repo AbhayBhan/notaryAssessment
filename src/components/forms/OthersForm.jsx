@@ -32,8 +32,8 @@ const OthersForm = ({ formData, setFormData, signerDets }) => {
         <PhoneInput
           defaultCountry="US"
           placeholder="Enter phone number"
-          value={formData.signers.phoneNumber}
-          onChange={setPhoneNum}/>
+          onChange={setPhoneNum}
+          />
       </div>
       <div className="flex flex-col items-start p-2 mb-4 space-y-3">
         <h3 className="text-lg font-bold">Email</h3>

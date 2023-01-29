@@ -18,27 +18,27 @@ const MobNotaryForm = () => {
   },[signatures, extraWitness, extraSigners])
 
   return (
-    <div className="container shadow-xl flex items-start border-2 mt-4 rounded-xl border-notaryGrey flex-col p-4">
+    <div className="container shadow-xl flex items-start border-2 mt-4 rounded-xl overflow-auto border-notaryGrey flex-col p-4">
       <h1 className="text-xl mx-auto font-bold">
         Calculate your Costs for MGN!
       </h1>
       <div className="flex flex-row gap-8 px-4 mt-16">
         <h2 className="font-semibold text-md md:text-xl">No. of Extra Signatures</h2>
-        <input onChange={(e) => SetSignatures(e.target.value)} className="border-2 rounded-lg border-notaryGrey" min='0' type="number" />
+        <input onChange={(e) => SetSignatures(e.target.value)} className="border-2 rounded-lg border-notaryGrey w-16 md:w-auto" min='0' type="number" />
       </div>
       <div className="flex flex-row gap-8 px-4 mt-8">
         <h2 className="font-semibold text-md md:text-xl">
           How Many Files will you be uploading in the session
         </h2>
-        <input className="border-2 rounded-lg border-notaryGrey" type="text" />
+        <input className="border-2 rounded-lg border-notaryGrey w-16 md:w-auto" type="text" />
       </div>
       <div className="flex flex-row gap-8 px-4 mt-8">
         <h2 className="font-semibold text-md md:text-xl">Number of Signers</h2>
-        <input onChange={(e) => setExtraSigners(e.target.value)} min='0' className="border-2 rounded-lg border-notaryGrey" type="number" />
+        <input onChange={(e) => setExtraSigners(e.target.value)} min='0' className="border-2 rounded-lg border-notaryGrey w-16 md:w-auto" type="number" />
       </div>
       <div className="flex flex-row gap-8 px-4 mt-8">
         <h2 className="font-semibold text-md md:text-xl">Do you Need Witness?</h2>
-        <input onChange={(e) => setExtraWitness(e.target.value)} min='0' className="border-2 rounded-lg border-notaryGrey" type="number" />
+        <input onChange={(e) => setExtraWitness(e.target.value)} min='0' className="border-2 rounded-lg border-notaryGrey w-16 md:w-auto" type="number" />
       </div>
       <h1 className="text-md mt-12 text-notaryDarkGrey ml-48 font-bold px-4 md:ml-64 md:text-xl">
         Your Approximate Quote : {quote}$

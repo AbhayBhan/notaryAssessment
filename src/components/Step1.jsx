@@ -14,6 +14,7 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
     }
     setActiveAgent({nsa : true, mgn : false, ron : false, oth : false});
     setFormData({...formData, isRealEstateTransaction : true, isOnlineSigning :  true});
+    setFormData({...formData, signers : []});
   };
 
   const handleRemote = () => {
@@ -44,7 +45,7 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
   }
 
   return (
-    <div className="container flex flex-col p-2 space-x-4 mx-auto md:flex-row">
+    <div className="container flex flex-col p-2 space-x-4 mx-auto -mt-6 md:flex-row">
       <div className="container flex flex-col gap-3 space-y-0">
         <div
           style={{
@@ -54,11 +55,11 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
           onClick={handleSign}
           className="flex flex-col mt-6 border-2 transition-all ease-out duration-150 border-notaryGrey rounded-xl"
         >
-          <h1 className="text-4xl px-4 mt-5">Notary Signing Agent</h1>
-          <p className="text-sm px-4 mt-2 text-notaryDarkGrey">
+          <h1 className="text-4xl px-4 mt-5 mb-5 md:mb-0">Notary Signing Agent</h1>
+          <p className="hidden text-sm px-4 mt-2 text-notaryDarkGrey md:block">
             Suitable for those who have purchased a brand new car.
           </p>
-          <p className="text-sm px-4 mb-4 mt-5 font-bold">
+          <p className="hidden text-sm px-4 mb-4 mt-5 font-bold md:block">
             View Details &rarr;
           </p>
         </div>
@@ -70,11 +71,11 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
           onClick={handleRemote}
           className="flex flex-col mt-6 border-2 transition-all ease-out duration-150 border-notaryGrey rounded-xl"
         >
-          <h1 className="text-4xl px-4 mt-5">Remote Online Notary</h1>
-          <p className="text-sm px-4 mt-2 text-notaryDarkGrey">
+          <h1 className="text-4xl px-4 mt-5 mb-5 md:mb-0">Remote Online Notary</h1>
+          <p className="hidden text-sm px-4 mt-2 text-notaryDarkGrey md:block">
             Suitable for thoe who already have a valid third party cover.
           </p>
-          <p className="text-sm px-4 mb-4 mt-5 font-bold">
+          <p className="hidden text-sm px-4 mb-4 mt-5 font-bold md:block">
             View Details &rarr;
           </p>
         </div>
@@ -86,11 +87,11 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
           onClick={handleMobile}
           className="flex flex-col mt-6 border-2 transition-all ease-out duration-150 border-notaryGrey rounded-xl"
         >
-          <h1 className="text-4xl px-4 mt-5">Mobile General Notary</h1>
-          <p className="text-sm px-4 mt-2 text-notaryDarkGrey">
+          <h1 className="text-4xl px-4 mt-5 mb-5 md:mb-0">Mobile General Notary</h1>
+          <p className="hidden text-sm px-4 mt-2 text-notaryDarkGrey md:block">
             Suitable for those who use the car infrequently.
           </p>
-          <p className="text-sm px-4 mb-4 mt-5 font-bold">
+          <p className="hidden text-sm px-4 mb-4 mt-5 font-bold md:block">
             View Details &rarr;
           </p>
         </div>
@@ -102,11 +103,11 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
           onClick={handleOthers}
           className="flex flex-col mt-6 border-2 transition-all ease-out duration-150 border-notaryGrey rounded-xl"
         >
-          <h1 className="text-4xl px-4 mt-5">Others</h1>
-          <p className="text-sm px-4 mt-2 text-notaryDarkGrey">
+          <h1 className="text-4xl px-4 mt-5 mb-5 md:mb-0">Others</h1>
+          <p className="hidden text-sm px-4 mt-2 text-notaryDarkGrey md:block">
             For other Service Categories
           </p>
-          <p className="text-sm px-4 mb-4 mt-5 font-bold">
+          <p className="hidden text-sm px-4 mb-4 mt-5 font-bold md:block">
             View Details &rarr;
           </p>
         </div>

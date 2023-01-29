@@ -60,7 +60,7 @@ const Step3 = ({ handleSubmit, formData, setFormData, err }) => {
 
   return (
     <div>
-      <h3 className="text-xl font-bold p-2 mt-3 text-notaryDarkGrey mb-2">
+      <h3 className="text-xl font-bold p-2 -mt-3 text-notaryDarkGrey mb-2">
         Signing Details
       </h3>
       <div

@@ -22,7 +22,7 @@ const Step2 = ({ formData, setFormData, activeAgent}) => {
   }
 
   return (
-    <div className="container flex flex-col gap-2 p-4 mt-8">
+    <div className="container flex flex-col gap-2 p-4 -mt-3">
       <h3 className="text-xl font-bold text-notaryDarkGrey mb-2">
         Signer Details
       </h3>
@@ -138,7 +138,12 @@ const Step2 = ({ formData, setFormData, activeAgent}) => {
       {!activeAgent.nsa ? 
       <>
       <div className="flex flex-row gap-4 p-2 mt-4">
-        <input className="" type='checkbox' checked={showWitness} onClick={() => setShowWitness(!showWitness)}/>
+        <input 
+          className="w-5 h-5 text-notaryProgressBar bg-gray-100 border-gray-300 focus:ring-notaryYellow rounded-full" 
+          type='checkbox' 
+          checked={showWitness} 
+          onClick={() => setShowWitness(!showWitness)}
+        />
         <h3 className="text-sm font-bold">Do you want Witness with this signing?</h3>
       </div>
       {showWitness ? 
