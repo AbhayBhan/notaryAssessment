@@ -3,7 +3,7 @@ import "../styles/main.css";
 import RonForm from "./forms/RonForm";
 import MobNotaryForm from "./forms/MobNotaryForm";
 import NotarySignForm from "./forms/NotarySignForm";
-import OthersForm from "./forms/OthersForm";
+import OthersForm from "./forms/OthersForm"; 
 
 const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
 
@@ -14,7 +14,13 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
     }
     setActiveAgent({nsa : true, mgn : false, ron : false, oth : false});
     setFormData({...formData, isRealEstateTransaction : true, isOnlineSigning :  true});
-    setFormData({...formData, signers : []});
+    setFormData({...formData, signers : [], customerDetails : {
+      customerName: "",
+      type: "Customer",
+      customerPhoneNumber: "",
+      customerEmailAddress: "",
+      companyName: ""
+    }});
   };
 
   const handleRemote = () => {
@@ -24,6 +30,7 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
     }
     setActiveAgent({nsa : false, mgn : false, ron : true, oth : false});
     setFormData({...formData, isRealEstateTransaction : false, isOnlineSigning : true});
+    setFormData({...formData, signers : [], customerDetails : null});
   };
 
   const handleMobile = () => {
@@ -33,6 +40,7 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
     }
     setActiveAgent({nsa : false, mgn : true, ron : false, oth : false});
     setFormData({...formData, isRealEstateTransaction : false, isOnlineSigning : false});
+    setFormData({...formData, signers : [], customerDetails : null});
   };
 
   const handleOthers = () => {
@@ -41,7 +49,7 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
       return;
     }
     setActiveAgent({nsa : false, mgn : false, ron : false, oth : true});
-    setFormData({...formData, isRealEstateTransaction : false, isOnlineSigning : false});
+    setFormData({...formData, isRealEstateTransaction : false, isOnlineSigning : false, customerDetails : null});
   }
 
   return (

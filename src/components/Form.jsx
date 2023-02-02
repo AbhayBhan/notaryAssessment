@@ -16,7 +16,7 @@ const Form = () => {
   const uId = getUserId();
   const [err, setErr] = useState("");
   const [activeAgent, setActiveAgent] = useState({
-    nsa: false,
+    nsa: true,
     mgn: false,
     ron: false,
     oth: false,
@@ -77,9 +77,6 @@ const Form = () => {
   });
 
   const handleSubmit = (setBtnLoading) => {
-    if (activeAgent.ron) {
-      setFormData({ ...formData, customerDetails: null });
-    }
     axios
       .post(
         "https://notaryapp-staging.herokuapp.com/plugin/submitApptDetails",
@@ -188,7 +185,11 @@ const Form = () => {
               ? "stepper-step stepper-active"
               : "stepper-step stepper-completed"
           }
-          onClick={() => setStep(2)}
+          onClick={() => {
+            if(!activeAgent.oth){
+              setStep(2);
+            }
+          }}
         >
           <div className="stepper-head">
             <span className="stepper-head-icon"> 2 </span>
@@ -223,8 +224,8 @@ const Form = () => {
       </ul>
       </div>
       
-      {/* This is the code for Horizontal Stepper which will only be active
-      for the desktops/larger than medium screens */}
+      {/* This is the code for Vertical Stepper which will only be active
+      for the mobile/smaller than medium screens */}
 
       <div className="block md:hidden">
       <ul className="stepper" data-mdb-stepper="stepper">

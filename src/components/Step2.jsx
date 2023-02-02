@@ -17,7 +17,8 @@ const Step2 = ({ formData, setFormData, activeAgent}) => {
   const addWitness = () => {
     setFormData({
       ...formData,
-      witnessList : [...formData.witnessList, {witnessName : "", witnessPhone : "", witnessEmail : "", type : "witness"}]
+      witnessList : [...formData.witnessList, {witnessName : "", witnessPhone : "", witnessEmail : "", type : "witness"}],
+      witnessCount : ++formData.witnessCount
     });
   }
 
@@ -217,8 +218,7 @@ const Step2 = ({ formData, setFormData, activeAgent}) => {
             value={formData.escrowNumber}
             className="px-1 rounded-lg border-2 border-solid border-notaryGrey"
             onChange={(e) => {
-              setFormData({ ...formData, escrowNumber: e.target.value });
-              setFormData({...formData, loanNo: e.target.value})
+              setFormData({ ...formData, escrowNumber: e.target.value, loanNo: e.target.value});
             }}
             type="text"
           />
