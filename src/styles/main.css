@@ -3730,6 +3730,11 @@ textarea.form-control.is-invalid {
   margin-right: auto;
 }
 
+.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
 .mb-6 {
   margin-bottom: 1.5rem;
 }
@@ -3746,6 +3751,10 @@ textarea.form-control.is-invalid {
   margin-left: 3rem;
 }
 
+.-ml-4 {
+  margin-left: -1rem;
+}
+
 .mt-4 {
   margin-top: 1rem;
 }
@@ -3754,8 +3763,8 @@ textarea.form-control.is-invalid {
   margin-bottom: 1rem;
 }
 
-.-mt-6 {
-  margin-top: -1.5rem;
+.mt-2 {
+  margin-top: 0.5rem;
 }
 
 .mt-6 {
@@ -3764,14 +3773,6 @@ textarea.form-control.is-invalid {
 
 .mt-5 {
   margin-top: 1.25rem;
-}
-
-.mb-5 {
-  margin-bottom: 1.25rem;
-}
-
-.mt-2 {
-  margin-top: 0.5rem;
 }
 
 .-mt-3 {
@@ -3806,16 +3807,16 @@ textarea.form-control.is-invalid {
   margin-left: 12rem;
 }
 
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+
 .mb-16 {
   margin-bottom: 4rem;
 }
 
-.-ml-5 {
-  margin-left: -1.25rem;
-}
-
-.-ml-4 {
-  margin-left: -1rem;
+.mt-3 {
+  margin-top: 0.75rem;
 }
 
 .block {
@@ -4002,12 +4003,16 @@ textarea.form-control.is-invalid {
   border-radius: 9999px;
 }
 
-.rounded-xl {
-  border-radius: 0.75rem;
+.rounded-md {
+  border-radius: 0.375rem;
 }
 
 .rounded-lg {
   border-radius: 0.5rem;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
 }
 
 .border-2 {
@@ -4286,10 +4291,6 @@ textarea.form-control.is-invalid {
 
   .md\:ml-\[18vw\] {
     margin-left: 18vw;
-  }
-
-  .md\:mb-0 {
-    margin-bottom: 0px;
   }
 
   .md\:ml-64 {

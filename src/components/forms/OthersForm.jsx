@@ -13,7 +13,7 @@ const OthersForm = ({ formData, setFormData, signerDets }) => {
   },[phoneNum])
 
   return (
-    <div className="container shadow-xl flex items-start border-2 mt-4 rounded-xl border-notaryGrey flex-col p-4">
+    <div className="container shadow-xl flex items-start border-2 mt-4 rounded-md border-notaryGrey flex-col p-4">
       <h1 className="mx-auto text-3xl font-bold mb-16">Details</h1>
       <div className="flex flex-col items-start p-2 mb-4 space-y-3">
         <h3 className="text-lg font-bold">Full Name</h3>

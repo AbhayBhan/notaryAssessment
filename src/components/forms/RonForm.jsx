@@ -18,7 +18,7 @@ const RonForm = () => {
   },[signatures, extraWitness, extraSigners])
 
   return (
-    <div className="container shadow-xl flex items-start border-2 mt-4 rounded-xl border-notaryGrey flex-col p-4 ">
+    <div className="container shadow-xl flex items-start border-2 mt-4 rounded-md border-notaryGrey flex-col p-4 ">
       <h1 className="text-xl mx-auto font-bold">
         Calculate your Costs for RON!
       </h1>

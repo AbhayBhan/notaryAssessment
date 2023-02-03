@@ -11,7 +11,7 @@ const NotarySignForm = ({ formData, setFormData }) => {
   });
 
   return (
-    <div className="container shadow-xl flex items-start border-2 mt-4 rounded-xl border-notaryGrey flex-col p-4 ">
+    <div className="container shadow-xl flex items-start border-2 mt-4 rounded-md border-notaryGrey flex-col p-4 ">
       <div className="flex flex-row justify-around gap-10 mx-auto">
         <button
           onClick={() => {
@@ -47,7 +47,7 @@ const NotarySignForm = ({ formData, setFormData }) => {
           RON
         </button>
       </div>
-      <div className="flex mx-auto flex-col gap-3 px-4 mt-16">
+      <div className="flex mx-auto flex-col gap-3 px-4 mt-16 mb-5">
         {showServices.online && <LSA_ONLINE formData={formData} setFormData={setFormData} />}
         {showServices.inoffice && <LSA_OFFLINE formData={formData} setFormData={setFormData} />}
         {showServices.ron && <GEN_ONLINE formData={formData} setFormData={setFormData} />}

@@ -18,7 +18,7 @@ const MobNotaryForm = () => {
   },[signatures, extraWitness, extraSigners])
 
   return (
-    <div className="container shadow-xl flex items-start border-2 mt-4 rounded-xl overflow-auto border-notaryGrey flex-col p-4">
+    <div className="container shadow-xl flex items-start border-2 mt-4 rounded-md overflow-auto border-notaryGrey flex-col p-4">
       <h1 className="text-xl mx-auto font-bold">
         Calculate your Costs for MGN!
       </h1>

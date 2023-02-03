@@ -53,23 +53,24 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
   }
 
   return (
-    <div className="container flex flex-col p-2 space-x-4 mx-auto -mt-6 md:flex-row">
-      <div className="container flex flex-col gap-3 space-y-0">
+    <div className="container flex flex-col p-2 space-x-4 mx-auto mt-3 md:flex-row">
+      <div className="container flex flex-col gap-3 space-y-0 mt-2">
+        <h1 className="text-2xl font-bold mb-3">Select your Service</h1>
         <div
           style={{
             borderColor: activeAgent.nsa ? "#8b36fd" : "#d5cfe3",
             backgroundColor: activeAgent.nsa ? "#fef2be" : "#FFF",
           }}
           onClick={handleSign}
-          className="flex flex-col mt-6 border-2 transition-all ease-out duration-150 border-notaryGrey rounded-xl"
+          className="flex flex-col mt-6 border-2 transition-all ease-out duration-150 border-notaryGrey rounded-md"
         >
-          <h1 className="text-4xl px-4 mt-5 mb-5 md:mb-0">Notary Signing Agent</h1>
-          <p className="hidden text-sm px-4 mt-2 text-notaryDarkGrey md:block">
+          <h1 className="text-4xl px-4 my-5">Notary Signing Agent</h1>
+          {/* <p className="hidden text-sm px-4 mt-2 text-notaryDarkGrey md:block">
             Suitable for those who have purchased a brand new car.
           </p>
           <p className="hidden text-sm px-4 mb-4 mt-5 font-bold md:block">
             View Details &rarr;
-          </p>
+          </p> */}
         </div>
         <div
           style={{
@@ -77,15 +78,15 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
             backgroundColor: activeAgent.ron ? "#fef2be" : "#FFF",
           }}
           onClick={handleRemote}
-          className="flex flex-col mt-6 border-2 transition-all ease-out duration-150 border-notaryGrey rounded-xl"
+          className="flex flex-col mt-6 border-2 transition-all ease-out duration-150 border-notaryGrey rounded-md"
         >
-          <h1 className="text-4xl px-4 mt-5 mb-5 md:mb-0">Remote Online Notary</h1>
-          <p className="hidden text-sm px-4 mt-2 text-notaryDarkGrey md:block">
+          <h1 className="text-4xl px-4 my-5">Remote Online Notary</h1>
+          {/* <p className="hidden text-sm px-4 mt-2 text-notaryDarkGrey md:block">
             Suitable for thoe who already have a valid third party cover.
           </p>
           <p className="hidden text-sm px-4 mb-4 mt-5 font-bold md:block">
             View Details &rarr;
-          </p>
+          </p> */}
         </div>
         <div
           style={{
@@ -93,15 +94,15 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
             backgroundColor: activeAgent.mgn ? "#fef2be" : "#FFF",
           }}
           onClick={handleMobile}
-          className="flex flex-col mt-6 border-2 transition-all ease-out duration-150 border-notaryGrey rounded-xl"
+          className="flex flex-col mt-6 border-2 transition-all ease-out duration-150 border-notaryGrey rounded-md"
         >
-          <h1 className="text-4xl px-4 mt-5 mb-5 md:mb-0">Mobile General Notary</h1>
-          <p className="hidden text-sm px-4 mt-2 text-notaryDarkGrey md:block">
+          <h1 className="text-4xl px-4 my-5">Mobile General Notary</h1>
+          {/* <p className="hidden text-sm px-4 mt-2 text-notaryDarkGrey md:block">
             Suitable for those who use the car infrequently.
           </p>
           <p className="hidden text-sm px-4 mb-4 mt-5 font-bold md:block">
             View Details &rarr;
-          </p>
+          </p> */}
         </div>
         <div
           style={{
@@ -109,15 +110,15 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
             backgroundColor: activeAgent.oth ? "#fef2be" : "#FFF",
           }}
           onClick={handleOthers}
-          className="flex flex-col mt-6 border-2 transition-all ease-out duration-150 border-notaryGrey rounded-xl"
+          className="flex flex-col mt-6 border-2 transition-all ease-out duration-150 border-notaryGrey rounded-md"
         >
-          <h1 className="text-4xl px-4 mt-5 mb-5 md:mb-0">Others</h1>
-          <p className="hidden text-sm px-4 mt-2 text-notaryDarkGrey md:block">
+          <h1 className="text-4xl px-4 my-5">Others</h1>
+          {/* <p className="hidden text-sm px-4 mt-2 text-notaryDarkGrey md:block">
             For other Service Categories
           </p>
           <p className="hidden text-sm px-4 mb-4 mt-5 font-bold md:block">
             View Details &rarr;
-          </p>
+          </p> */}
         </div>
       </div>
       
