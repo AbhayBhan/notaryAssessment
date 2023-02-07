@@ -13,7 +13,7 @@ function App() {
         <Form />
     </div>
     </DataProvider>
-  )
+  )  
 }
 
 export default App
