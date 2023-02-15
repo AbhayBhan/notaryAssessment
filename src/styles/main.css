@@ -3763,6 +3763,10 @@ textarea.form-control.is-invalid {
   margin-bottom: 1rem;
 }
 
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -3813,10 +3817,6 @@ textarea.form-control.is-invalid {
 
 .mb-16 {
   margin-bottom: 4rem;
-}
-
-.mt-3 {
-  margin-top: 0.75rem;
 }
 
 .block {
@@ -3873,6 +3873,10 @@ textarea.form-control.is-invalid {
 
 .w-full {
   width: 100%;
+}
+
+.w-\[90vw\] {
+  width: 90vw;
 }
 
 .flex-1 {

@@ -6,7 +6,7 @@ import GooglePlacesAutocomplete, {
 import { useData } from "../contexts/DataContext";
 import '../styles/loader.css';
 
-const Step3 = ({ handleSubmit, formData, setFormData, err }) => {
+const Step3 = ({ handleSubmit, formData, setFormData, activeAgent, err }) => {
   const { getTimeDet } = useData();
   const [date, selectDate] = useState("");
   const [timeList, setTimeList] = useState([]);
@@ -67,7 +67,7 @@ const Step3 = ({ handleSubmit, formData, setFormData, err }) => {
         style={{ borderTop: "2px solid", borderColor: "#a5a0b0" }}
         className="flex flex-row gap-16 p-4 flex-wrap"
       >
-        {!formData.isOnlineSigning ? (
+        {!activeAgent.ron ? (
           <div className="flex flex-col space-y-2">
             <h4 className="mb-1">Enter Signing Location</h4>
             <GooglePlacesAutocomplete

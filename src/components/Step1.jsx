@@ -14,7 +14,7 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
     }
     setActiveAgent({nsa : true, mgn : false, ron : false, oth : false});
     setFormData({...formData, isRealEstateTransaction : true, isOnlineSigning :  true});
-    setFormData({...formData, signers : [], customerDetails : {
+    setFormData({...formData, signers : [{ signerFullName: "", phoneNumber: "", emailAddress: "" }], customerDetails : {
       customerName: "",
       type: "Customer",
       customerPhoneNumber: "",
@@ -30,7 +30,7 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
     }
     setActiveAgent({nsa : false, mgn : false, ron : true, oth : false});
     setFormData({...formData, isRealEstateTransaction : false, isOnlineSigning : true});
-    setFormData({...formData, signers : [], customerDetails : null});
+    setFormData({...formData, signers : [{ signerFullName: "", phoneNumber: "", emailAddress: "" }], customerDetails : null});
   };
 
   const handleMobile = () => {
@@ -40,7 +40,7 @@ const Step1 = ({activeAgent, setActiveAgent, formData, setFormData}) => {
     }
     setActiveAgent({nsa : false, mgn : true, ron : false, oth : false});
     setFormData({...formData, isRealEstateTransaction : false, isOnlineSigning : false});
-    setFormData({...formData, signers : [], customerDetails : null});
+    setFormData({...formData, signers : [{ signerFullName: "", phoneNumber: "", emailAddress: "" }], customerDetails : null});
   };
 
   const handleOthers = () => {

@@ -49,7 +49,7 @@ const Form = () => {
       companyName: "",
       companyAddress: bDet.businessAddress,
     },
-    signers: [],
+    signers: [{ signerFullName: "", phoneNumber: "", emailAddress: "" }],
     witnessCount: 0,
     witnessList: [],
     propertyAddress: "",
@@ -123,6 +123,7 @@ const Form = () => {
           handleSubmit={handleSubmit}
           formData={formData}
           setFormData={setFormData}
+          activeAgent={activeAgent}
           err={err}
         />
       );
