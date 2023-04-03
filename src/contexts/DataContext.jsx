@@ -54,7 +54,7 @@ const DataProvider = ({ children }) => {
   };
 
   const getUserId = () => {
-    return params.data.response.personalInfo.uid;
+    return params.data.response.personalInfo._id;
   };
 
   const getTimeDet = () => {
