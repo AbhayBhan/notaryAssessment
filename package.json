@@ -5,6 +5,7 @@
   "type": "module",
   "homepage": "http://abhaybhan.github.io/notaryAssessment",
   "scripts": {
+    "start": "react-scripts start",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
@@ -15,8 +16,11 @@
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.5.3",
+    "antd": "^5.3.3",
     "axios": "^1.2.1",
+    "dayjs": "^1.11.7",
     "react": "^18.2.0",
+    "react-datepicker": "^4.11.0",
     "react-dom": "^18.2.0",
     "react-google-places-autocomplete": "^3.4.0",
     "react-phone-number-input": "^3.2.16",

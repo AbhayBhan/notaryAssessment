@@ -6,3 +6,7 @@
 *{
     font-family: 'Whitney', sans-serif;
 }
+
+.scrollHider::-webkit-scrollbar{
+    display: none;
+}

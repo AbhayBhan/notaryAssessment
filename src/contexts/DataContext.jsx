@@ -1,78 +1,81 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import axios from 'axios';
-import PageLoader from '../components/PageLoader';
+import React, { createContext, useContext, useEffect, useState } from "react";
+import axios from "axios";
+import PageLoader from "../components/PageLoader";
 
 const DataContext = createContext();
 
 export const useData = () => {
-    return useContext(DataContext);
-}
+  return useContext(DataContext);
+};
 
-const DataProvider = ({children}) => {
-    const [params, setParams] = useState({});
-    const [loading, setLoading] = useState(true);
-    const [counter, setCounter] = useState(false);
+const DataProvider = ({ children }) => {
+  const [params, setParams] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [counter, setCounter] = useState(false);
 
-    useEffect(() => {
-        const getData = () => {
-            axios.post("https://notaryapp-staging.herokuapp.com/plugin/getPluginSampleResponse", {username : window.location.hostname})
-            .then((res) => {
-                setParams(res);
-                setCounter(true);
+  useEffect(() => {
+    const getData = () => {
+      axios
+        .post("https://staging.thenotary.app/plugin/getPluginHome", {
+          username: "nandha",
+        })
+        .then((res) => {
+          setParams(res);
+          setCounter(true);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getData();
+  }, []);
 
-            }).catch((err) => {
-                console.log(err);
-            })
-        }
-        getData();
-    },[]);
-
-    useEffect(() => {
-        if(counter){
-            console.log(params);
-            setLoading(false);
-        }
-    },[params])
-
-    const getPersonalDet = () => {
-        return params.data.response.personalInfo
+  useEffect(() => {
+    if (counter) {
+      console.log(params);
+      setLoading(false);
     }
+  }, [params]);
 
-    const getBusinessDet = () => {
-        return params.data.response.personalInfo.businessDetails;
-    }
+  const getPersonalDet = () => {
+    return params.data.response.personalInfo;
+  };
 
-    const getServiceDet = () => {
-        return params.data.response.ServicesInfo;
-    }
+  const getBusinessDet = () => {
+    return params.data.response.personalInfo.businessInfo;
+  };
 
-    const getCostDet = () => {
-        return params.data.response.costSettings;
-    }
+  const getServiceDet = () => {
+    return params.data.response.ServicesInfo;
+  };
 
-    const getUserId = () => {
-        return params.data.response._id;
-    }
+  const getCostDet = () => {
+    return params.data.response.costSettings;
+  };
 
-    const getTimeDet = () => {
-        return params.data.response.timingInfo[0];
-    }
+  const getUserId = () => {
+    return params.data.response.personalInfo.uid;
+  };
 
-    const val = {
-        params,
-        getPersonalDet,
-        getBusinessDet,
-        getServiceDet,
-        getCostDet,
-        getUserId,
-        getTimeDet
-    }
+  const getTimeDet = () => {
+    return params.data.response.timingInfo[0];
+  };
+
+  const val = {
+    params,
+    getPersonalDet,
+    getBusinessDet,
+    getServiceDet,
+    getCostDet,
+    getUserId,
+    getTimeDet,
+  };
 
   return (
     <DataContext.Provider value={val}>
-        {!loading ? children : <PageLoader />}
+      {!loading ? children : <PageLoader />}
     </DataContext.Provider>
-  )
-}
+  );
+};
 
-export default DataProvider
+export default DataProvider;

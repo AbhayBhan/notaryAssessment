@@ -8,6 +8,7 @@ import Step4 from "./Step4";
 import "../styles/main.css";
 import "tw-elements";
 import { useData } from "../contexts/DataContext";
+import "../index.css";
 
 const Form = () => {
   const [step, setStep] = useState(1);
@@ -23,12 +24,12 @@ const Form = () => {
   });
   const [formData, setFormData] = useState({
     activityHistory: [],
-    isRealEstateTransaction: false,
+    isRealEstateTransaction: true,
     isOnlineSigning: false,
     escrowNumber: "",
+    serviceId_DB: "asdfasdf",
     loanNo: "",
     place: {
-      isInOffice: false,
       completeAddress: "",
       lat: "",
       lon: "",
@@ -58,6 +59,7 @@ const Form = () => {
     signingTime: "",
     readableTime: "",
     isMileageEntered: false,
+    isMileageEntryRequired: false,
     isNotarialActsEntered: false,
     isExpenseEntered: false,
     status: 0,
@@ -76,15 +78,32 @@ const Form = () => {
     isCancelledBefore: false,
   });
 
+  const apptCreateRequestBody = {
+    notaryId : getUserId(),
+    serviceDetails : formData.serviceDetails,
+    propertyAddress : formData.propertyAddress,
+    prop_SigningDetails : {
+      signerCount : formData.signers.length,
+      witnessCount : formData.witnessCount
+    },
+    isOnlineSigning : formData.isOnlineSigning,
+    place : formData.place,
+    escrowNumber : formData.escrowNumber,
+    aptTimeStamp : formData.signingDateTimeStamp,
+    isRealEstateTransaction : formData.isRealEstateTransaction,
+    isMileageEntryRequired : formData.isMileageEntryRequired,
+    onlineMeetingLink : false,
+    customerDetails : formData.customerDetails,
+    signers : formData.signers,
+    isWitnessPresent : formData.witnessCount ? true : false,
+    witnessDetails : formData.witnessList,
+  };
+
   const handleSubmit = (setBtnLoading) => {
     axios
-      .post(
-        "https://notaryapp-staging.herokuapp.com/plugin/submitApptDetails",
-        formData
-      )
+      .post("https://staging.thenotary.app/plugin/createAppointment", apptCreateRequestBody)
       .then(() => {
         console.log("sent!");
-        console.log(formData);
         setErr("");
         setStep(step + 1);
       })
@@ -96,6 +115,7 @@ const Form = () => {
       })
       .finally(() => {
         setBtnLoading(false);
+        console.log(apptCreateRequestBody);
       });
   };
 
@@ -132,7 +152,7 @@ const Form = () => {
     }
   };
   return (
-    <div className="relative container w-[87vw] h-[100vh] p-2 md:ml-[18vw]">
+    <div className="relative container p-2 md:ml-[18vw]">
       <div className="flex flex-row">
         {" "}
         {/*Previous Button Functionality*/}
@@ -164,136 +184,134 @@ const Form = () => {
       for the desktops/larger than mediums screens */}
 
       <div className="hidden md:block">
-      <ul className="stepper" data-mdb-stepper="stepper">
-        <li
-          className={
-            step === 1
-              ? "stepper-step stepper-active"
-              : "stepper-step stepper-completed"
-          }
-          onClick={() => setStep(1)}
-        >
-          <div className="stepper-head">
-            <span className="stepper-head-icon"> 1 </span>
-            <span className="stepper-head-text"> Select Service </span>
-          </div>
-        </li>
-        <li
-          className={
-            step === 1
-              ? "stepper-step"
-              : step === 2
-              ? "stepper-step stepper-active"
-              : "stepper-step stepper-completed"
-          }
-          onClick={() => {
-            if(!activeAgent.oth){
-              setStep(2);
+        <ul className="stepper" data-mdb-stepper="stepper">
+          <li
+            className={
+              step === 1
+                ? "stepper-step stepper-active"
+                : "stepper-step stepper-completed"
             }
-          }}
-        >
-          <div className="stepper-head">
-            <span className="stepper-head-icon"> 2 </span>
-            <span className="stepper-head-text"> Signer Details </span>
-          </div>
-        </li>
-        <li
-          className={
-            step < 3
-              ? "stepper-step"
-              : step === 3
-              ? "stepper-step stepper-active"
-              : "stepper-step stepper-completed"
-          }
-          onClick={() => setStep(3)}
-        >
-          <div className="stepper-head">
-            <span className="stepper-head-icon"> 3 </span>
-            <span className="stepper-head-text"> Date & Time </span>
-          </div>
-        </li>
-        <li
-          className={
-            step === 4 ? "stepper-step stepper-completed" : "stepper-step"
-          }
-        >
-          <div className="stepper-head">
-            <span className="stepper-head-icon"> 4 </span>
-            <span className="stepper-head-text"> Success </span>
-          </div>
-        </li>
-      </ul>
+            onClick={() => setStep(1)}
+          >
+            <div className="stepper-head">
+              <span className="stepper-head-icon"> 1 </span>
+              <span className="stepper-head-text"> Select Service </span>
+            </div>
+          </li>
+          <li
+            className={
+              step === 1
+                ? "stepper-step"
+                : step === 2
+                ? "stepper-step stepper-active"
+                : "stepper-step stepper-completed"
+            }
+            onClick={() => {
+              if (!activeAgent.oth) {
+                setStep(2);
+              }
+            }}
+          >
+            <div className="stepper-head">
+              <span className="stepper-head-icon"> 2 </span>
+              <span className="stepper-head-text"> Signer Details </span>
+            </div>
+          </li>
+          <li
+            className={
+              step < 3
+                ? "stepper-step"
+                : step === 3
+                ? "stepper-step stepper-active"
+                : "stepper-step stepper-completed"
+            }
+            onClick={() => setStep(3)}
+          >
+            <div className="stepper-head">
+              <span className="stepper-head-icon"> 3 </span>
+              <span className="stepper-head-text"> Date & Time </span>
+            </div>
+          </li>
+          <li
+            className={
+              step === 4 ? "stepper-step stepper-completed" : "stepper-step"
+            }
+          >
+            <div className="stepper-head">
+              <span className="stepper-head-icon"> 4 </span>
+              <span className="stepper-head-text"> Success </span>
+            </div>
+          </li>
+        </ul>
       </div>
-      
+
       {/* This is the code for Vertical Stepper which will only be active
       for the mobile/smaller than medium screens */}
 
       <div className="block md:hidden">
-      <ul className="stepper" data-mdb-stepper="stepper">
-        <div className="flex flex-col p-2 justify-start items-start">
-        <li
-          className={
-            step === 1
-              ? "stepper-step stepper-active -ml-4"
-              : "stepper-step stepper-completed -ml-4"
-          }
-          onClick={() => setStep(1)}
+        <ul
+          className="stepper overflow-auto scrollHider p-5"
+          data-mdb-stepper="stepper"
         >
-          <div className="stepper-head">
-            <span className="stepper-head-icon"> 1 </span>
-            <span className="stepper-head-text"> Select Service </span>
-          </div>
-        </li>
-        <li
-          className={
-            step === 1
-              ? "stepper-step"
-              : step === 2
-              ? "stepper-step stepper-active"
-              : "stepper-step stepper-completed"
-          }
-          onClick={() => setStep(2)}
-        >
-          <div className="stepper-head">
-            <span className="stepper-head-icon"> 2 </span>
-            <span className="stepper-head-text"> Signer Details </span>
-          </div>
-        </li>
-        <li
-          className={
-            step < 3
-              ? "stepper-step"
-              : step === 3
-              ? "stepper-step stepper-active"
-              : "stepper-step stepper-completed"
-          }
-          onClick={() => setStep(3)}
-        >
-          <div className="stepper-head">
-            <span className="stepper-head-icon"> 3 </span>
-            <span className="stepper-head-text"> Date & Time </span>
-          </div>
-        </li>
-        <li
-          className={
-            step === 4 ? "stepper-step stepper-completed" : "stepper-step"
-          }
-        >
-          <div className="stepper-head">
-            <span className="stepper-head-icon"> 4 </span>
-            <span className="stepper-head-text"> Success </span>
-          </div>
-        </li>
-        </div>
-      </ul>
+          <li
+            className={
+              step === 1
+                ? "stepper-step stepper-active -ml-4"
+                : "stepper-step stepper-completed -ml-4"
+            }
+            onClick={() => setStep(1)}
+          >
+            <div className="stepper-head">
+              <span className="stepper-head-icon"> 1 </span>
+              <span className="stepper-head-text w-44"> Select Service </span>
+            </div>
+          </li>
+          <li
+            className={
+              step === 1
+                ? "stepper-step"
+                : step === 2
+                ? "stepper-step stepper-active"
+                : "stepper-step stepper-completed"
+            }
+            onClick={() => setStep(2)}
+          >
+            <div className="stepper-head">
+              <span className="stepper-head-icon"> 2 </span>
+              <span className="stepper-head-text w-44"> Signer Details </span>
+            </div>
+          </li>
+          <li
+            className={
+              step < 3
+                ? "stepper-step"
+                : step === 3
+                ? "stepper-step stepper-active"
+                : "stepper-step stepper-completed"
+            }
+            onClick={() => setStep(3)}
+          >
+            <div className="stepper-head">
+              <span className="stepper-head-icon"> 3 </span>
+              <span className="stepper-head-text w-44"> Date & Time </span>
+            </div>
+          </li>
+          <li
+            className={
+              step === 4 ? "stepper-step stepper-completed" : "stepper-step"
+            }
+          >
+            <div className="stepper-head">
+              <span className="stepper-head-icon"> 4 </span>
+              <span className="stepper-head-text"> Success </span>
+            </div>
+          </li>
+        </ul>
       </div>
 
       <div>{handlePages()}</div>
       {step < 3 ? (
-        <div className="flex flex-row px-6 mt-4 gap-2 justify-end">
-          <h3 className="text-notaryTextPurple text-xl font-bold ">
-            Next Step
-          </h3>
+        <div className="fixed bottom-6 right-0 px-6">
           <button
             disabled={step === 4}
             onClick={() => {
@@ -303,9 +321,9 @@ const Form = () => {
               }
               setStep(step + 1);
             }}
-            className="bg-notaryLightYellow text-notaryDarkGrey mb-4 font-bold rounded-full px-2 py-1"
+            className="ml-auto text-white bg-primary-500 btn hover:bg-primary-600"
           >
-            &rarr;
+            Next Step
           </button>
         </div>
       ) : (
